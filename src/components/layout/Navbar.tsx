@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Instagram, ExternalLink, Sparkles } from 'lucide-react';
+import { Menu, X, Instagram, ExternalLink } from 'lucide-react';
 import { STUDIO_INFO } from '@/lib/constants';
 
 interface NavbarProps {
@@ -107,8 +107,8 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
           ))}
         </nav>
 
-        {/* Desktop Actions */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Desktop Social Icons */}
+        <div className="hidden md:flex items-center gap-3">
           <a
             href={STUDIO_INFO.instagramUrl}
             target="_blank"
@@ -120,14 +120,16 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             <Instagram className="w-4 h-4" />
           </a>
 
-          <button
-            onClick={onOpenQuote}
+          <a
+            href={STUDIO_INFO.behanceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             data-cursor="magnetic"
-            className="px-5 py-2.5 bg-warm-orange hover:bg-orange-light text-near-black text-xs uppercase tracking-wider font-extrabold rounded-full shadow-orange-glow hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
+            className="p-2 rounded-full border border-dark-border bg-dark-card/80 text-light-bg hover:text-warm-orange hover:border-warm-orange transition-colors flex items-center justify-center cursor-pointer"
+            title="View Behance Portfolio"
           >
-            <Sparkles className="w-3.5 h-3.5 text-near-black" />
-            <span>Start a Project</span>
-          </button>
+            <ExternalLink className="w-4 h-4" />
+          </a>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -165,42 +167,29 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
               ))}
             </div>
 
-            <div className="pt-4 flex flex-col space-y-3">
-              <div className="flex items-center gap-3">
-                <a
-                  href={STUDIO_INFO.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-2.5 px-4 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center justify-between transition-colors cursor-pointer"
-                >
-                  <span className="flex items-center gap-2">
-                    <Instagram className="w-4 h-4 text-warm-orange" />
-                    <span>Instagram</span>
-                  </span>
-                  <span className="text-warm-orange text-[10px]">{STUDIO_INFO.instagramHandle}</span>
-                </a>
-
-                <a
-                  href={STUDIO_INFO.behanceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="py-2.5 px-4 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center gap-1.5 transition-colors cursor-pointer"
-                >
-                  <ExternalLink className="w-4 h-4 text-warm-orange" />
-                  <span>Behance</span>
-                </a>
-              </div>
-
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenQuote();
-                }}
-                className="w-full py-3.5 bg-warm-orange text-near-black rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 shadow-orange-glow active:scale-95 transition-all cursor-pointer"
+            <div className="pt-4 flex items-center gap-3">
+              <a
+                href={STUDIO_INFO.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-2.5 px-4 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center justify-between transition-colors cursor-pointer"
               >
-                <Sparkles className="w-4 h-4 text-near-black" />
-                <span>Start a Project</span>
-              </button>
+                <span className="flex items-center gap-2">
+                  <Instagram className="w-4 h-4 text-warm-orange" />
+                  <span>Instagram</span>
+                </span>
+                <span className="text-warm-orange text-[10px]">{STUDIO_INFO.instagramHandle}</span>
+              </a>
+
+              <a
+                href={STUDIO_INFO.behanceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="py-2.5 px-4 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center gap-1.5 transition-colors cursor-pointer"
+              >
+                <ExternalLink className="w-4 h-4 text-warm-orange" />
+                <span>Behance</span>
+              </a>
             </div>
           </motion.div>
         )}
