@@ -59,7 +59,7 @@ export default function CustomCursor() {
     <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
       {/* Inner Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2.5 h-2.5 bg-vivid-teal rounded-full pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 shadow-teal-glow"
+        className="fixed top-0 left-0 w-2.5 h-2.5 bg-warm-orange rounded-full pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 shadow-orange-glow"
         animate={{
           x: position.x - 5,
           y: position.y - 5,
@@ -71,14 +71,14 @@ export default function CustomCursor() {
       {/* Outer Fluid Ring */}
       <motion.div
         ref={cursorRef}
-        className="fixed top-0 left-0 rounded-full border border-vivid-teal/50 pointer-events-none z-40 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center backdrop-blur-[1px]"
+        className="fixed top-0 left-0 rounded-full border border-warm-orange/50 pointer-events-none z-40 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center backdrop-blur-[1px]"
         animate={{
           x: position.x - 24,
           y: position.y - 24,
           width: isHovered ? 72 : 48,
           height: isHovered ? 72 : 48,
-          backgroundColor: isHovered ? 'rgba(47, 230, 201, 0.9)' : 'rgba(47, 230, 201, 0.08)',
-          borderColor: isHovered ? 'rgba(91, 243, 219, 1)' : 'rgba(47, 230, 201, 0.4)',
+          backgroundColor: isHovered ? 'rgba(242, 140, 40, 0.9)' : 'rgba(242, 140, 40, 0.08)',
+          borderColor: isHovered ? 'rgba(255, 170, 84, 1)' : 'rgba(242, 140, 40, 0.4)',
           scale: isClicking ? 0.85 : 1,
         }}
         transition={{ type: 'spring', damping: 24, stiffness: 250, mass: 0.15 }}
@@ -87,7 +87,7 @@ export default function CustomCursor() {
           <motion.span
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-[10px] font-extrabold uppercase tracking-widest text-charcoal-navy"
+            className="text-[10px] font-extrabold uppercase tracking-widest text-near-black"
           >
             {cursorText}
           </motion.span>

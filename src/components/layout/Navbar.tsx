@@ -61,12 +61,12 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'py-3 bg-charcoal-navy/90 backdrop-blur-xl border-b border-navy-border/80 shadow-premium'
+          ? 'py-3 bg-near-black/90 backdrop-blur-xl border-b border-dark-border/80 shadow-premium'
           : 'py-5 bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo & Name (Acts as Home smooth-scroll link) */}
+        {/* Real Brand Logo & Name (Acts as Home smooth-scroll link) */}
         <a
           href="#"
           onClick={handleLogoClick}
@@ -76,17 +76,17 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
         >
           <div className="relative w-9 h-9 rounded-lg overflow-hidden group-hover:scale-110 group-active:scale-95 transition-transform duration-200">
             <Image
-              src="/assets/logo.png"
+              src="/logo.png"
               alt="Rakesh Designs Logo"
               fill
               className="object-contain"
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-display font-bold text-lg text-warm-offwhite tracking-tight group-hover:text-vivid-teal transition-colors">
+            <span className="font-display font-bold text-lg text-light-bg tracking-tight group-hover:text-warm-orange transition-colors">
               {STUDIO_INFO.name}
             </span>
-            <span className="text-[10px] tracking-widest uppercase font-semibold text-vivid-teal group-hover:underline">
+            <span className="text-[10px] tracking-widest uppercase font-semibold text-warm-orange">
               Creative Studio
             </span>
           </div>
@@ -100,7 +100,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               data-cursor="magnetic"
-              className="text-sm font-medium text-warm-offwhite/80 hover:text-vivid-teal transition-colors tracking-wide cursor-pointer"
+              className="text-sm font-medium text-light-bg/80 hover:text-warm-orange transition-colors tracking-wide cursor-pointer"
             >
               {link.label}
             </a>
@@ -114,7 +114,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="magnetic"
-            className="p-2 rounded-full border border-navy-border bg-navy-card/80 text-warm-offwhite hover:text-vivid-teal hover:border-vivid-teal transition-colors flex items-center justify-center cursor-pointer"
+            className="p-2 rounded-full border border-dark-border bg-dark-card/80 text-light-bg hover:text-warm-orange hover:border-warm-orange transition-colors flex items-center justify-center cursor-pointer"
             title={`Follow on Instagram ${STUDIO_INFO.instagramHandle}`}
           >
             <Instagram className="w-4 h-4" />
@@ -123,9 +123,9 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
           <button
             onClick={onOpenQuote}
             data-cursor="magnetic"
-            className="px-5 py-2.5 bg-vivid-teal hover:bg-teal-light text-charcoal-navy text-xs uppercase tracking-wider font-extrabold rounded-full shadow-teal-glow hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
+            className="px-5 py-2.5 bg-warm-orange hover:bg-orange-light text-near-black text-xs uppercase tracking-wider font-extrabold rounded-full shadow-orange-glow hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
           >
-            <Sparkles className="w-3.5 h-3.5 text-charcoal-navy" />
+            <Sparkles className="w-3.5 h-3.5 text-near-black" />
             <span>Start a Project</span>
           </button>
         </div>
@@ -134,10 +134,10 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           data-cursor="magnetic"
-          className="md:hidden p-2.5 rounded-xl text-warm-offwhite bg-navy-card border border-navy-border hover:border-vivid-teal transition-colors cursor-pointer"
+          className="md:hidden p-2.5 rounded-xl text-light-bg bg-dark-card border border-dark-border hover:border-warm-orange transition-colors cursor-pointer"
           aria-label="Toggle Navigation Menu"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6 text-vivid-teal" /> : <Menu className="w-6 h-6 text-warm-offwhite" />}
+          {mobileMenuOpen ? <X className="w-6 h-6 text-warm-orange" /> : <Menu className="w-6 h-6 text-light-bg" />}
         </button>
       </div>
 
@@ -149,7 +149,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="md:hidden bg-charcoal-navy border-b border-navy-border px-6 py-6 space-y-4 shadow-2xl overflow-hidden"
+            className="md:hidden bg-near-black border-b border-dark-border px-6 py-6 space-y-4 shadow-2xl overflow-hidden"
           >
             <div className="flex flex-col space-y-3">
               {navLinks.map((link) => (
@@ -157,10 +157,10 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-lg font-bold text-warm-offwhite hover:text-vivid-teal transition-colors py-2 border-b border-navy-border/40 flex items-center justify-between cursor-pointer"
+                  className="text-lg font-bold text-light-bg hover:text-warm-orange transition-colors py-2 border-b border-dark-border/40 flex items-center justify-between cursor-pointer"
                 >
                   <span>{link.label}</span>
-                  <span className="text-vivid-teal text-xs">→</span>
+                  <span className="text-warm-orange text-xs">→</span>
                 </a>
               ))}
             </div>
@@ -171,22 +171,22 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
                   href={STUDIO_INFO.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2.5 px-4 bg-navy-card border border-navy-border rounded-xl text-xs font-semibold text-warm-offwhite hover:border-vivid-teal flex items-center justify-between transition-colors cursor-pointer"
+                  className="flex-1 py-2.5 px-4 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center justify-between transition-colors cursor-pointer"
                 >
                   <span className="flex items-center gap-2">
-                    <Instagram className="w-4 h-4 text-vivid-teal" />
+                    <Instagram className="w-4 h-4 text-warm-orange" />
                     <span>Instagram</span>
                   </span>
-                  <span className="text-vivid-teal text-[10px]">{STUDIO_INFO.instagramHandle}</span>
+                  <span className="text-warm-orange text-[10px]">{STUDIO_INFO.instagramHandle}</span>
                 </a>
 
                 <a
                   href={STUDIO_INFO.behanceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-2.5 px-4 bg-navy-card border border-navy-border rounded-xl text-xs font-semibold text-warm-offwhite hover:border-vivid-teal flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="py-2.5 px-4 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <ExternalLink className="w-4 h-4 text-vivid-teal" />
+                  <ExternalLink className="w-4 h-4 text-warm-orange" />
                   <span>Behance</span>
                 </a>
               </div>
@@ -196,9 +196,9 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
                   setMobileMenuOpen(false);
                   onOpenQuote();
                 }}
-                className="w-full py-3.5 bg-vivid-teal text-charcoal-navy rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 shadow-teal-glow active:scale-95 transition-all cursor-pointer"
+                className="w-full py-3.5 bg-warm-orange text-near-black rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 shadow-orange-glow active:scale-95 transition-all cursor-pointer"
               >
-                <Sparkles className="w-4 h-4 text-charcoal-navy" />
+                <Sparkles className="w-4 h-4 text-near-black" />
                 <span>Start a Project</span>
               </button>
             </div>

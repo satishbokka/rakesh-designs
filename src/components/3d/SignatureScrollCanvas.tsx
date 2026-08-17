@@ -102,13 +102,13 @@ function SceneGroup({ progress }: { progress: number }) {
         />
       ))}
 
-      {/* Ambient Teal Particle Atmosphere */}
+      {/* Ambient Vivid Warm Orange Particle Atmosphere */}
       <DreiSparkles
         count={70}
         scale={7}
         size={3}
         speed={0.4}
-        color="#2FE6C9"
+        color="#F28C28"
       />
     </group>
   );
@@ -121,16 +121,16 @@ export default function SignatureScrollCanvas({ progress }: { progress: number }
         camera={{ position: [0, 0, 4.5], fov: 45 }}
         gl={{ antialias: true, alpha: true, failIfMajorPerformanceCaveat: false }}
       >
-        <color attach="background" args={['#0D0F14']} />
+        <color attach="background" args={['#080808']} />
         <ambientLight intensity={1.1} />
         <spotLight
           position={[5, 8, 5]}
           angle={0.4}
           penumbra={0.8}
           intensity={2.2}
-          color="#F1EEE7"
+          color="#F7F5F2"
         />
-        <pointLight position={[-4, -4, 3]} intensity={1.6} color="#2FE6C9" />
+        <pointLight position={[-4, -4, 3]} intensity={1.6} color="#F28C28" />
         <Suspense fallback={null}>
           <SceneGroup progress={progress} />
         </Suspense>

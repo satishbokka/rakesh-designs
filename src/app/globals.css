@@ -9,13 +9,13 @@
   }
 
   html {
-    background-color: #12151C;
-    color: #F1EEE7;
+    background-color: #0D0D0D;
+    color: #F7F5F2;
   }
 
   body {
-    background-color: #12151C;
-    color: #F1EEE7;
+    background-color: #0D0D0D;
+    color: #F7F5F2;
     overflow-x: hidden;
   }
 }
@@ -48,8 +48,8 @@ html.lenis, html.lenis body {
 }
 
 ::selection {
-  background-color: #2FE6C9;
-  color: #12151C;
+  background-color: #F28C28;
+  color: #0D0D0D;
 }
 
 /* Custom Scrollbar */
@@ -57,47 +57,47 @@ html.lenis, html.lenis body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0D0F14;
+  background: #050505;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2FE6C9;
+  background: #F28C28;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #5BF3DB;
+  background: #FFAA54;
 }
 
 /* Ambient Background Grain & Glow Effects */
 .bg-navy-gradient {
-  background: radial-gradient(circle at 50% 0%, rgba(47, 230, 201, 0.12) 0%, rgba(18, 21, 28, 1) 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(242, 140, 40, 0.14) 0%, rgba(13, 13, 13, 1) 70%);
 }
 
 .bg-navy-card {
-  background: linear-gradient(135deg, rgba(30, 35, 48, 0.95) 0%, rgba(13, 15, 20, 0.98) 100%);
+  background: linear-gradient(135deg, rgba(31, 31, 31, 0.95) 0%, rgba(13, 13, 13, 0.98) 100%);
 }
 
 .glass-navy {
-  background: rgba(18, 21, 28, 0.85);
+  background: rgba(13, 13, 13, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(46, 53, 71, 0.6);
+  border: 1px solid rgba(46, 46, 46, 0.6);
 }
 
-.glass-teal {
-  background: rgba(47, 230, 201, 0.15);
+.glass-orange {
+  background: rgba(242, 140, 40, 0.15);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(47, 230, 201, 0.3);
+  border: 1px solid rgba(242, 140, 40, 0.3);
 }
 
 .text-teal-gradient {
-  background: linear-gradient(135deg, #2FE6C9 0%, #5BF3DB 100%);
+  background: linear-gradient(135deg, #F28C28 0%, #FFAA54 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-offwhite-gradient {
-  background: linear-gradient(135deg, #F1EEE7 0%, #C7C3BB 100%);
+  background: linear-gradient(135deg, #F7F5F2 0%, #A39F97 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
