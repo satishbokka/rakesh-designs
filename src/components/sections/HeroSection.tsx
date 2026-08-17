@@ -17,9 +17,10 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
-  const handleViewWork = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleNavScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const element = document.getElementById('portfolio');
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
     if (element) {
       const topOffset = element.getBoundingClientRect().top + window.scrollY - 70;
       window.scrollTo({ top: topOffset, behavior: 'smooth' });
@@ -50,21 +51,21 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
               <span className="text-warm-orange">{STUDIO_INFO.yearsExperience} EXPERIENCE</span>
             </div>
 
-            {/* Main Headline (Master Brief Copy) */}
+            {/* Main Headline */}
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold text-light-bg tracking-tight leading-[1.1]">
               Creative ideas. <span className="text-teal-gradient">Crafted to stand out</span>.
             </h1>
 
-            {/* Supporting Description (Master Brief Copy) */}
+            {/* Supporting Description */}
             <p className="text-base sm:text-lg text-offwhite-muted max-w-xl font-normal leading-relaxed">
               {STUDIO_INFO.subTagline}
             </p>
 
-            {/* Two Action CTAs (Master Brief) */}
+            {/* Portfolio Conversion Path CTAs */}
             <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <a
                 href="#portfolio"
-                onClick={handleViewWork}
+                onClick={(e) => handleNavScroll(e, '#portfolio')}
                 data-cursor="magnetic"
                 className="px-8 py-4 bg-warm-orange hover:bg-orange-light text-near-black font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-orange-glow hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 group cursor-pointer"
               >
@@ -72,14 +73,14 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
                 <ArrowRight className="w-4 h-4 text-near-black group-hover:translate-x-1 transition-transform" />
               </a>
 
-              <button
-                onClick={onOpenQuote}
+              <a
+                href="#contact"
+                onClick={(e) => handleNavScroll(e, '#contact')}
                 data-cursor="magnetic"
                 className="px-7 py-4 border border-dark-border hover:border-warm-orange bg-dark-card/80 hover:bg-dark-light text-light-bg font-semibold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer"
               >
-                <Sparkles className="w-4 h-4 text-warm-orange" />
-                <span>Start a Project</span>
-              </button>
+                <span>Get in Touch</span>
+              </a>
             </div>
 
             {/* Credibility Badges */}
@@ -111,7 +112,7 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
         <div className="mt-12 flex justify-center">
           <a
             href="#portfolio"
-            onClick={handleViewWork}
+            onClick={(e) => handleNavScroll(e, '#portfolio')}
             data-cursor="magnetic"
             className="flex flex-col items-center gap-1 text-xs font-semibold text-offwhite-muted hover:text-warm-orange transition-colors group cursor-pointer"
           >

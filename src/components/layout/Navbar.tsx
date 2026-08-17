@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Instagram, ExternalLink, Sparkles } from 'lucide-react';
+import { Menu, X, Instagram, ExternalLink, ArrowRight } from 'lucide-react';
 import { STUDIO_INFO } from '@/lib/constants';
 
 interface NavbarProps {
@@ -131,14 +131,15 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             <ExternalLink className="w-4 h-4" />
           </a>
 
-          <button
-            onClick={onOpenQuote}
+          <a
+            href="#contact"
+            onClick={(e) => handleNavClick(e, '#contact')}
             data-cursor="magnetic"
             className="px-5 py-2 bg-warm-orange hover:bg-orange-light text-near-black text-xs uppercase tracking-wider font-extrabold rounded-full shadow-orange-glow hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer ml-1"
           >
-            <Sparkles className="w-3.5 h-3.5 text-near-black" />
-            <span>Start a Project</span>
-          </button>
+            <span>Get in Touch</span>
+            <ArrowRight className="w-3.5 h-3.5 text-near-black" />
+          </a>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -202,16 +203,14 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
                 </a>
               </div>
 
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenQuote();
-                }}
-                className="w-full py-3.5 bg-warm-orange text-near-black rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 shadow-orange-glow active:scale-95 transition-all cursor-pointer"
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, '#contact')}
+                className="w-full py-3.5 bg-warm-orange text-near-black rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 shadow-orange-glow active:scale-95 transition-all cursor-pointer text-center"
               >
-                <Sparkles className="w-4 h-4 text-near-black" />
-                <span>Start a Project</span>
-              </button>
+                <span>Get in Touch</span>
+                <ArrowRight className="w-4 h-4 text-near-black" />
+              </a>
             </div>
           </motion.div>
         )}

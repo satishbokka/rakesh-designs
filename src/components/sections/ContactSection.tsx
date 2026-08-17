@@ -41,7 +41,7 @@ export default function ContactSection() {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Column: Master Brief Conversion Copy & WhatsApp CTA */}
+          {/* Left Column: Contact Copy & WhatsApp Conversion */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -76,7 +76,7 @@ export default function ContactSection() {
                     <MessageSquare className="w-6 h-6 text-near-black" />
                   </div>
                   <div>
-                    <span className="text-xs font-extrabold text-near-black/80 uppercase block">Fast Conversion</span>
+                    <span className="text-xs font-extrabold text-near-black/80 uppercase block">Direct Consultation</span>
                     <span className="font-display font-extrabold text-lg text-near-black">
                       Chat on WhatsApp →
                     </span>
@@ -151,22 +151,22 @@ export default function ContactSection() {
                   <CheckCircle2 className="w-8 h-8 text-near-black" />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-light-bg">
-                  Inquiry Sent Successfully!
+                  Inquiry Received!
                 </h3>
                 <p className="text-sm text-offwhite-muted max-w-md mx-auto">
-                  Opening WhatsApp to complete your direct consultation...
+                  Opening WhatsApp to complete your consultation...
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <h3 className="font-display text-2xl font-bold text-light-bg">
-                  Send a Direct Project Brief
+                  Send a Direct Message
                 </h3>
 
                 {/* Service Selector */}
                 <div>
                   <label className="block text-xs font-bold text-light-bg uppercase tracking-wider mb-2">
-                    Service Required
+                    Service Interest
                   </label>
                   <select
                     value={selectedService}
@@ -234,7 +234,7 @@ export default function ContactSection() {
                     className="w-full sm:flex-1 py-4 bg-warm-orange hover:bg-orange-light text-near-black rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-orange-glow transition-all cursor-pointer"
                   >
                     <Send className="w-4 h-4 text-near-black" />
-                    <span>Start a Project</span>
+                    <span>Get in Touch</span>
                   </button>
 
                   <a

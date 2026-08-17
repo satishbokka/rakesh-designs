@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ArrowUpRight, Instagram, MessageSquare, Heart, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Instagram, MessageSquare, Phone, MapPin, ExternalLink, ArrowRight } from 'lucide-react';
 import { STUDIO_INFO } from '@/lib/constants';
 
 interface FooterProps {
@@ -155,13 +155,16 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-1">
-              <button
-                onClick={onOpenQuote}
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, '#contact')}
                 data-cursor="magnetic"
-                className="px-5 py-2.5 bg-warm-orange hover:bg-orange-light text-near-black rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all shadow-orange-glow cursor-pointer"
+                className="px-5 py-2.5 bg-warm-orange hover:bg-orange-light text-near-black rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all shadow-orange-glow cursor-pointer inline-flex items-center justify-center gap-1.5"
               >
-                Start a Project
-              </button>
+                <span>Get in Touch</span>
+                <ArrowRight className="w-3.5 h-3.5 text-near-black" />
+              </a>
+
               <a
                 href={STUDIO_INFO.whatsappUrl}
                 target="_blank"

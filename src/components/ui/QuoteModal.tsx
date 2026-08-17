@@ -21,7 +21,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const serviceTitle = SERVICES.find((s) => s.id === selectedService)?.title || selectedService;
-    const text = `Hello Rakesh Designs!\n\nNew Quote Request:\n- Name: ${name}\n- Contact: ${phone}\n- Service Interest: ${serviceTitle}\n- Details: ${details}`;
+    const text = `Hi Rakesh Designs, I'm interested in getting a design. I'd like to discuss my requirements.\n\nDetails:\n- Name: ${name}\n- Contact: ${phone}\n- Service Interest: ${serviceTitle}\n- Details: ${details}`;
     const encoded = encodeURIComponent(text);
     const waUrl = `https://wa.me/${STUDIO_INFO.whatsappNumber}?text=${encoded}`;
     window.open(waUrl, '_blank');
@@ -49,13 +49,13 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
           <div className="space-y-1">
             <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-warm-orange uppercase tracking-widest">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Project Quote Estimator</span>
+              <span>Studio Inquiry</span>
             </div>
             <h3 className="font-display text-2xl font-bold text-light-bg">
-              Start Your Project Inquiry
+              Get in Touch
             </h3>
             <p className="text-xs text-offwhite-muted">
-              Select your design category interest and we will connect instantly via WhatsApp.
+              Select your design category interest and connect directly with Rakesh Designs.
             </p>
           </div>
 
@@ -109,11 +109,11 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
 
             <div>
               <label className="block text-xs font-bold text-light-bg uppercase tracking-wider mb-1.5">
-                Project Details / Specifications
+                Project Details
               </label>
               <textarea
                 rows={3}
-                placeholder="Mention size (e.g. 10x6 ft flex), deadline, or special photo enhancement requests..."
+                placeholder="Mention size, deadline, or special photo enhancement requests..."
                 value={details}
                 onChange={(e) => setDetails(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl border border-dark-border bg-near-black text-light-bg placeholder:text-offwhite-muted/50 focus:outline-none focus:border-warm-orange text-sm resize-none"
@@ -125,7 +125,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
               className="w-full py-3.5 bg-warm-orange hover:bg-orange-light text-near-black font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-orange-glow transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-near-black" />
-              <span>Connect on WhatsApp</span>
+              <span>Chat on WhatsApp →</span>
             </button>
           </form>
         </motion.div>

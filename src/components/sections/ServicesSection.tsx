@@ -17,6 +17,16 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
+  const handleNavScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      const topOffset = element.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="services" className="py-20 md:py-28 bg-near-black text-light-bg relative border-t border-dark-border/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,17 +99,18 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
               {/* Action Button */}
               <div className="pt-6 mt-6 border-t border-dark-border/60 flex items-center justify-between">
                 <span className="text-xs text-offwhite-muted/70 italic">
-                  Direct project quotation available
+                  Custom inquiries welcome
                 </span>
 
-                <button
-                  onClick={onOpenQuote}
+                <a
+                  href="#contact"
+                  onClick={(e) => handleNavScroll(e, '#contact')}
                   data-cursor="magnetic"
                   className="px-4 py-2.5 bg-warm-orange hover:bg-orange-light text-near-black text-xs font-extrabold uppercase tracking-wider rounded-xl transition-all flex items-center gap-1.5 shadow-orange-glow cursor-pointer"
                 >
-                  <span>Start a Project</span>
+                  <span>Get in Touch</span>
                   <ArrowRight className="w-3.5 h-3.5 text-near-black" />
-                </button>
+                </a>
               </div>
             </motion.div>
           ))}
