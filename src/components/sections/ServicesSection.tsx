@@ -11,9 +11,9 @@ interface ServicesSectionProps {
 
 const iconMap: Record<string, React.ReactNode> = {
   Printer: <Printer className="w-6 h-6 text-warm-orange" />,
+  Wand2: <Wand2 className="w-6 h-6 text-warm-orange" />,
   Frame: <Frame className="w-6 h-6 text-warm-orange" />,
   Sparkles: <Sparkles className="w-6 h-6 text-warm-orange" />,
-  Wand2: <Wand2 className="w-6 h-6 text-warm-orange" />,
 };
 
 export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
@@ -25,19 +25,19 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center gap-2 text-xs font-semibold text-warm-orange uppercase tracking-widest px-3.5 py-1 bg-dark-card border border-dark-border rounded-full shadow-sm">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Studio Services</span>
+            <span>Design Disciplines</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-light-bg tracking-tight">
-            Design Services & Scope
+            What We Create
           </h2>
 
           <p className="text-sm sm:text-base text-offwhite-muted">
-            Custom design services tailored for events, commercial printing, social media posts, and photo restoration.
+            Crafted design services tailored for events, commercial printing, social media, and photo editing.
           </p>
         </div>
 
-        {/* Services Grid */}
+        {/* Editorial Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {SERVICES.map((service: ServiceCategory, idx: number) => (
             <motion.div
@@ -55,8 +55,8 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
                     {iconMap[service.iconName] || <Sparkles className="w-6 h-6 text-warm-orange" />}
                   </div>
 
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-warm-orange px-3 py-1 bg-near-black rounded-full border border-dark-border">
-                    {service.highlightTag}
+                  <span className="font-display font-bold text-xl text-warm-orange opacity-80 group-hover:opacity-100 transition-opacity">
+                    {service.number}
                   </span>
                 </div>
 
@@ -73,11 +73,8 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
                   {service.description}
                 </p>
 
-                {/* Deliverables Checklist */}
+                {/* Deliverables Scope */}
                 <div className="pt-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-light-bg mb-2">
-                    Key Scope Deliverables:
-                  </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {service.deliverables.map((item, dIdx) => (
                       <div key={dIdx} className="flex items-center gap-2 text-xs text-light-bg/85">
@@ -92,7 +89,7 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
               {/* Action Button */}
               <div className="pt-6 mt-6 border-t border-dark-border/60 flex items-center justify-between">
                 <span className="text-xs text-offwhite-muted/70 italic">
-                  Custom quote tailored to project scope
+                  Direct project quotation available
                 </span>
 
                 <button
@@ -100,7 +97,7 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
                   data-cursor="magnetic"
                   className="px-4 py-2.5 bg-warm-orange hover:bg-orange-light text-near-black text-xs font-extrabold uppercase tracking-wider rounded-xl transition-all flex items-center gap-1.5 shadow-orange-glow cursor-pointer"
                 >
-                  <span>Request Quote</span>
+                  <span>Start a Project</span>
                   <ArrowRight className="w-3.5 h-3.5 text-near-black" />
                 </button>
               </div>

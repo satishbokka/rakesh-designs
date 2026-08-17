@@ -17,6 +17,15 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
+  const handleViewWork = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById('portfolio');
+    if (element) {
+      const topOffset = element.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-[90vh] pt-28 pb-16 md:pt-36 md:pb-20 flex items-center bg-navy-gradient overflow-hidden z-10 text-light-bg">
       {/* Background Ambient Glows */}
@@ -36,39 +45,41 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
             {/* Top Studio Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-dark-card border border-dark-border rounded-full text-xs font-semibold text-light-bg tracking-wider uppercase shadow-sm">
               <Sparkles className="w-3.5 h-3.5 text-warm-orange" />
-              <span>BESPOKE CREATIVE STUDIO</span>
+              <span>RAKESH DESIGNS STUDIO</span>
               <span className="w-1.5 h-1.5 rounded-full bg-warm-orange" />
               <span className="text-warm-orange">{STUDIO_INFO.yearsExperience} EXPERIENCE</span>
             </div>
 
-            {/* Main Headline (Clear & Direct) */}
+            {/* Main Headline (Master Brief Copy) */}
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold text-light-bg tracking-tight leading-[1.1]">
-              Graphic Design That Makes Your Photos & Brand Look <span className="text-teal-gradient">Premium</span>.
+              Creative ideas. <span className="text-teal-gradient">Crafted to stand out</span>.
             </h1>
 
-            {/* Clear Subtext */}
+            {/* Supporting Description (Master Brief Copy) */}
             <p className="text-base sm:text-lg text-offwhite-muted max-w-xl font-normal leading-relaxed">
-              Custom photo frames, flex banners, posters, and social media designs — crafted with precision and delivered print-ready, every time.
+              {STUDIO_INFO.subTagline}
             </p>
 
-            {/* Action Buttons */}
+            {/* Two Action CTAs (Master Brief) */}
             <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <button
-                onClick={onOpenQuote}
+              <a
+                href="#portfolio"
+                onClick={handleViewWork}
                 data-cursor="magnetic"
                 className="px-8 py-4 bg-warm-orange hover:bg-orange-light text-near-black font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-orange-glow hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 group cursor-pointer"
               >
-                <span>START A PROJECT</span>
+                <span>View Our Work</span>
                 <ArrowRight className="w-4 h-4 text-near-black group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
 
-              <a
-                href="#portfolio"
+              <button
+                onClick={onOpenQuote}
                 data-cursor="magnetic"
                 className="px-7 py-4 border border-dark-border hover:border-warm-orange bg-dark-card/80 hover:bg-dark-light text-light-bg font-semibold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer"
               >
-                <span>Explore 3D Work Gallery</span>
-              </a>
+                <Sparkles className="w-4 h-4 text-warm-orange" />
+                <span>Start a Project</span>
+              </button>
             </div>
 
             {/* Credibility Badges */}
@@ -100,6 +111,7 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
         <div className="mt-12 flex justify-center">
           <a
             href="#portfolio"
+            onClick={handleViewWork}
             data-cursor="magnetic"
             className="flex flex-col items-center gap-1 text-xs font-semibold text-offwhite-muted hover:text-warm-orange transition-colors group cursor-pointer"
           >

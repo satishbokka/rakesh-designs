@@ -31,11 +31,13 @@ export default function PortfolioSection({ onOpenQuote }: PortfolioSectionProps)
   const pinWrapperRef = useRef<HTMLDivElement>(null);
 
   const categories = [
-    { id: 'all', label: 'All Works' },
-    { id: 'social', label: 'Social Posters & CDPs' },
-    { id: 'frames', label: 'Custom Photo Frames' },
-    { id: 'retouching', label: 'Photo Retouching' },
-    { id: 'print', label: 'Flex & Banner Design' },
+    { id: 'all', label: 'All' },
+    { id: 'branding', label: 'Branding' },
+    { id: 'posters', label: 'Posters' },
+    { id: 'flex', label: 'Flex & Banners' },
+    { id: 'social', label: 'Social Media' },
+    { id: 'editing', label: 'Photo Editing' },
+    { id: 'frames', label: 'Custom Frames' },
   ];
 
   const filteredItems = selectedCategory === 'all'
@@ -79,15 +81,15 @@ export default function PortfolioSection({ onOpenQuote }: PortfolioSectionProps)
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 text-xs font-semibold text-warm-orange uppercase tracking-widest px-3.5 py-1 bg-dark-card border border-dark-border rounded-full shadow-sm">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Interactive Pinned 3D Showcase</span>
+              <span>Visual Showcase</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-light-bg tracking-tight">
-              Crafted Showcase Gallery
+              Our Work
             </h2>
 
             <p className="text-sm sm:text-base text-offwhite-muted">
-              Scroll down to scrub & rotate through 3D work samples. Click any piece for full project deliverables.
+              Explore our gallery of design projects, custom photoframes, flex prints, and digital media.
             </p>
           </div>
 
@@ -121,7 +123,7 @@ export default function PortfolioSection({ onOpenQuote }: PortfolioSectionProps)
           </div>
         </div>
 
-        {/* Category Filters */}
+        {/* 7 Category Filters */}
         <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-6 no-scrollbar">
           {categories.map((cat) => (
             <button
@@ -147,7 +149,7 @@ export default function PortfolioSection({ onOpenQuote }: PortfolioSectionProps)
           <div className="space-y-4">
             <div data-cursor="drag">
               <Portfolio3DCanvas
-                items={filteredItems}
+                items={filteredItems.length > 0 ? filteredItems : PORTFOLIO_ITEMS}
                 onSelectItem={(item) => setActiveItem(item)}
                 rotationOffset={rotationOffset}
                 setRotationOffset={setRotationOffset}
@@ -182,7 +184,7 @@ export default function PortfolioSection({ onOpenQuote }: PortfolioSectionProps)
         ) : (
           /* Grid View */
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredItems.map((item, idx) => (
+            {(filteredItems.length > 0 ? filteredItems : PORTFOLIO_ITEMS).map((item, idx) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -227,7 +229,7 @@ export default function PortfolioSection({ onOpenQuote }: PortfolioSectionProps)
 
       </div>
 
-      {/* Project Detail Modal Popup */}
+      {/* Project Lightbox Preview Modal */}
       <Modal
         item={activeItem}
         onClose={() => setActiveItem(null)}

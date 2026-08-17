@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Instagram, ExternalLink } from 'lucide-react';
+import { Menu, X, Instagram, ExternalLink, Sparkles } from 'lucide-react';
 import { STUDIO_INFO } from '@/lib/constants';
 
 interface NavbarProps {
@@ -27,6 +27,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
   }, []);
 
   const navLinks = [
+    { label: 'Home', href: '#' },
     { label: 'Work', href: '#portfolio' },
     { label: 'Services', href: '#services' },
     { label: 'About', href: '#about' },
@@ -36,6 +37,11 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+
+    if (href === '#') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
 
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
@@ -51,12 +57,6 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
     }
   };
 
-  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
@@ -69,7 +69,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
         {/* Real Brand Logo & Name (Acts as Home smooth-scroll link) */}
         <a
           href="#"
-          onClick={handleLogoClick}
+          onClick={(e) => handleNavClick(e, '#')}
           data-cursor="magnetic"
           className="flex items-center gap-3 group cursor-pointer select-none"
           title="Return to top"
@@ -107,18 +107,17 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
           ))}
         </nav>
 
-        {/* Desktop Social Buttons (Instagram & Behance side-by-side) */}
-        <div className="hidden md:flex items-center gap-2.5">
+        {/* Desktop Actions */}
+        <div className="hidden md:flex items-center gap-3">
           <a
             href={STUDIO_INFO.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="magnetic"
-            className="px-3.5 py-1.5 rounded-full border border-dark-border bg-dark-card/80 hover:bg-dark-card text-light-bg hover:text-warm-orange hover:border-warm-orange transition-all flex items-center gap-1.5 text-xs font-semibold cursor-pointer shadow-sm hover:scale-[1.02] active:scale-95"
-            title={`Follow live work on Instagram ${STUDIO_INFO.instagramHandle}`}
+            className="p-2 rounded-full border border-dark-border bg-dark-card/80 text-light-bg hover:text-warm-orange hover:border-warm-orange transition-colors flex items-center justify-center cursor-pointer"
+            title={`Follow on Instagram ${STUDIO_INFO.instagramHandle}`}
           >
-            <Instagram className="w-3.5 h-3.5 text-warm-orange" />
-            <span>Instagram</span>
+            <Instagram className="w-4 h-4" />
           </a>
 
           <a
@@ -126,12 +125,20 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="magnetic"
-            className="px-3.5 py-1.5 rounded-full border border-dark-border bg-dark-card/80 hover:bg-dark-card text-light-bg hover:text-warm-orange hover:border-warm-orange transition-all flex items-center gap-1.5 text-xs font-semibold cursor-pointer shadow-sm hover:scale-[1.02] active:scale-95"
-            title="View full Behance portfolio"
+            className="p-2 rounded-full border border-dark-border bg-dark-card/80 text-light-bg hover:text-warm-orange hover:border-warm-orange transition-colors flex items-center justify-center cursor-pointer"
+            title="View Behance Portfolio"
           >
-            <ExternalLink className="w-3.5 h-3.5 text-warm-orange" />
-            <span>Behance</span>
+            <ExternalLink className="w-4 h-4" />
           </a>
+
+          <button
+            onClick={onOpenQuote}
+            data-cursor="magnetic"
+            className="px-5 py-2 bg-warm-orange hover:bg-orange-light text-near-black text-xs uppercase tracking-wider font-extrabold rounded-full shadow-orange-glow hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer ml-1"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-near-black" />
+            <span>Start a Project</span>
+          </button>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -169,29 +176,42 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
               ))}
             </div>
 
-            <div className="pt-4 flex items-center gap-3">
-              <a
-                href={STUDIO_INFO.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 py-2.5 px-4 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center justify-between transition-colors cursor-pointer"
-              >
-                <span className="flex items-center gap-2">
-                  <Instagram className="w-4 h-4 text-warm-orange" />
-                  <span>Instagram</span>
-                </span>
-                <span className="text-warm-orange text-[10px]">{STUDIO_INFO.instagramHandle}</span>
-              </a>
+            <div className="pt-4 flex flex-col space-y-3">
+              <div className="flex items-center gap-3">
+                <a
+                  href={STUDIO_INFO.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-2.5 px-4 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center justify-between transition-colors cursor-pointer"
+                >
+                  <span className="flex items-center gap-2">
+                    <Instagram className="w-4 h-4 text-warm-orange" />
+                    <span>Instagram</span>
+                  </span>
+                  <span className="text-warm-orange text-[10px]">{STUDIO_INFO.instagramHandle}</span>
+                </a>
 
-              <a
-                href={STUDIO_INFO.behanceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-2.5 px-4 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center gap-1.5 transition-colors cursor-pointer"
+                <a
+                  href={STUDIO_INFO.behanceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-2.5 px-4 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <ExternalLink className="w-4 h-4 text-warm-orange" />
+                  <span>Behance</span>
+                </a>
+              </div>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenQuote();
+                }}
+                className="w-full py-3.5 bg-warm-orange text-near-black rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 shadow-orange-glow active:scale-95 transition-all cursor-pointer"
               >
-                <ExternalLink className="w-4 h-4 text-warm-orange" />
-                <span>Behance</span>
-              </a>
+                <Sparkles className="w-4 h-4 text-near-black" />
+                <span>Start a Project</span>
+              </button>
             </div>
           </motion.div>
         )}

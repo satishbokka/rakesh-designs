@@ -12,6 +12,10 @@ interface FooterProps {
 export default function Footer({ onOpenQuote }: FooterProps) {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    if (href === '#') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
     if (element) {
@@ -47,7 +51,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             </div>
 
             <p className="text-sm text-offwhite-muted max-w-sm leading-relaxed">
-              Custom photo frames, flex banners, posters, and social media designs. Located in {STUDIO_INFO.location}.
+              Creative design studio for brands, businesses and special moments. Located in {STUDIO_INFO.location}.
             </p>
 
             {/* Live Social Badges */}
@@ -60,7 +64,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 className="inline-flex items-center gap-2 px-4 py-2 bg-dark-card hover:bg-warm-orange hover:text-near-black text-light-bg text-xs font-semibold rounded-full border border-dark-border transition-colors group cursor-pointer"
               >
                 <Instagram className="w-4 h-4 text-warm-orange group-hover:text-near-black" />
-                <span>Instagram {STUDIO_INFO.instagramHandle}</span>
+                <span>Instagram</span>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
               </a>
 
@@ -72,7 +76,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 className="inline-flex items-center gap-2 px-4 py-2 bg-dark-card hover:bg-warm-orange hover:text-near-black text-light-bg text-xs font-semibold rounded-full border border-dark-border transition-colors group cursor-pointer"
               >
                 <ExternalLink className="w-4 h-4 text-warm-orange group-hover:text-near-black" />
-                <span>Behance Portfolio</span>
+                <span>Behance</span>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
               </a>
             </div>
@@ -81,16 +85,25 @@ export default function Footer({ onOpenQuote }: FooterProps) {
           {/* Quick Navigation Links */}
           <div className="md:col-span-3 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-widest text-warm-orange">
-              Studio Navigation
+              Navigation
             </h4>
             <ul className="space-y-2 text-sm text-offwhite-muted">
+              <li>
+                <a
+                  href="#"
+                  onClick={(e) => handleNavClick(e, '#')}
+                  className="hover:text-warm-orange transition-colors cursor-pointer"
+                >
+                  Home
+                </a>
+              </li>
               <li>
                 <a
                   href="#portfolio"
                   onClick={(e) => handleNavClick(e, '#portfolio')}
                   className="hover:text-warm-orange transition-colors cursor-pointer"
                 >
-                  Work Showcase
+                  Work
                 </a>
               </li>
               <li>
@@ -99,7 +112,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                   onClick={(e) => handleNavClick(e, '#services')}
                   className="hover:text-warm-orange transition-colors cursor-pointer"
                 >
-                  Services & Scope
+                  Services
                 </a>
               </li>
               <li>
@@ -108,7 +121,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                   onClick={(e) => handleNavClick(e, '#about')}
                   className="hover:text-warm-orange transition-colors cursor-pointer"
                 >
-                  Studio Story & Craft
+                  About
                 </a>
               </li>
               <li>
@@ -117,7 +130,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                   onClick={(e) => handleNavClick(e, '#contact')}
                   className="hover:text-warm-orange transition-colors cursor-pointer"
                 >
-                  Start a Project / Inquiry
+                  Contact
                 </a>
               </li>
             </ul>
@@ -126,7 +139,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
           {/* Contact & Direct Lead */}
           <div className="md:col-span-4 space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-widest text-warm-orange">
-              Direct Contact Channels
+              Direct Contact
             </h4>
             <div className="text-xs text-offwhite-muted space-y-1.5">
               <div className="flex items-center gap-2">
@@ -147,7 +160,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 data-cursor="magnetic"
                 className="px-5 py-2.5 bg-warm-orange hover:bg-orange-light text-near-black rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all shadow-orange-glow cursor-pointer"
               >
-                Get Custom Quote
+                Start a Project
               </button>
               <a
                 href={STUDIO_INFO.whatsappUrl}
@@ -157,20 +170,23 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 className="px-4 py-2.5 border border-dark-border hover:border-warm-orange text-light-bg rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4 text-warm-orange" />
-                <span>WhatsApp Studio</span>
+                <span>WhatsApp</span>
               </a>
             </div>
           </div>
         </div>
 
-        {/* Copyright & Disclaimer */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-offwhite-muted/60 gap-4">
+        {/* Final Line */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-offwhite-muted/70 gap-4">
           <p>© {new Date().getFullYear()} {STUDIO_INFO.name}. All Rights Reserved.</p>
-          <div className="flex items-center gap-1">
-            <span>Crafted with precision in</span>
-            <Heart className="w-3.5 h-3.5 text-warm-orange fill-warm-orange" />
-            <span>{STUDIO_INFO.location}</span>
-          </div>
+          <a
+            href="#contact"
+            onClick={(e) => handleNavClick(e, '#contact')}
+            className="text-warm-orange font-bold hover:underline flex items-center gap-1 cursor-pointer"
+          >
+            <span>Let's create something memorable</span>
+            <span>→</span>
+          </a>
         </div>
       </div>
     </footer>

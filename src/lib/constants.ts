@@ -1,7 +1,7 @@
 export interface PortfolioItem {
   id: string;
   title: string;
-  category: 'print' | 'frames' | 'social' | 'retouching';
+  category: 'branding' | 'posters' | 'flex' | 'social' | 'editing' | 'frames';
   categoryLabel: string;
   image: string;
   aspectRatio: string;
@@ -14,25 +14,37 @@ export interface PortfolioItem {
 
 export interface ServiceCategory {
   id: string;
+  number: string;
   title: string;
   subtitle: string;
   description: string;
   iconName: string;
   deliverables: string[];
-  idealFor: string;
-  highlightTag: string;
+}
+
+export interface TrustPoint {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+}
+
+export interface ProcessStep {
+  step: string;
+  title: string;
+  description: string;
 }
 
 export const STUDIO_INFO = {
   name: 'Rakesh Designs',
-  tagline: 'Graphic Design That Makes Your Photos & Brand Look Premium',
-  subTagline: 'Custom photo frames, flex banners, posters, and social media designs — crafted with precision and delivered print-ready, every time.',
+  tagline: 'Creative ideas. Crafted to stand out.',
+  subTagline: 'Graphic design, photo editing and visual experiences created with precision and creativity.',
   instagramHandle: '@rakesh_designs_03',
   instagramUrl: 'https://instagram.com/rakesh_designs_03',
   behanceUrl: 'https://www.behance.net/rakeshmangam',
   phone: '89780 15826',
   whatsappNumber: '918978015826',
-  whatsappUrl: 'https://wa.me/918978015826?text=Hi%20Rakesh%20Designs,%20I%20would%20like%20to%20inquire%20about%20a%20new%20project.',
+  whatsappUrl: 'https://wa.me/918978015826?text=Hi%20Rakesh%20Designs,%20I%27m%20interested%20in%20getting%20a%20design.%20I%27d%20like%20to%20discuss%20my%20requirements.',
   location: 'Amalapuram, Andhra Pradesh',
   email: 'hello@rakeshdesigns.in',
   yearsExperience: '5+',
@@ -42,44 +54,90 @@ export const STUDIO_INFO = {
 
 export const SERVICES: ServiceCategory[] = [
   {
-    id: 'flex-banner',
-    title: 'Flex & Outdoor Banner Design',
-    subtitle: 'Flex Banners, Hoardings & Print Collateral',
-    description: 'High-visibility flex banners, hoardings, event backdrops, and shop front signs designed for maximum contrast and sharp print output.',
+    id: 'graphic-design',
+    number: '01',
+    title: 'Graphic Design',
+    subtitle: 'Posters, Flex Designs & Promotional Visuals',
+    description: 'Posters, flex designs, banners, promotional materials and creative visuals created with precision and impact.',
     iconName: 'Printer',
-    deliverables: ['Flex & Vinyl Banners', 'Event Backdrops & Hoardings', 'Standees & Shop Boards', 'Print-Ready Files'],
-    idealFor: 'Businesses, shops, event hosts, and local campaigns.',
-    highlightTag: 'Print Ready HD',
+    deliverables: ['Event Posters', 'Flex & Vinyl Banners', 'Promotional Collateral', 'Print-Ready Vector Files'],
+  },
+  {
+    id: 'photo-editing',
+    number: '02',
+    title: 'Photo Editing',
+    subtitle: 'Retouching, Color Enhancement & Restoration',
+    description: 'Professional retouching, enhancement, restoration and creative editing to bring out the finest detail in any photograph.',
+    iconName: 'Wand2',
+    deliverables: ['Skin & Portrait Retouching', 'Color Grading & Enhancement', 'Background Composite', 'Vintage Restoration'],
   },
   {
     id: 'custom-frames',
-    title: 'Custom Photo Frames',
-    subtitle: 'Canvas Prints, Gift Frames & Wall Displays',
-    description: 'Beautiful custom photo framing and canvas print layouts for family photos, birthday gifts, anniversary keepsakes, and wall decor.',
+    number: '03',
+    title: 'Custom Frames',
+    subtitle: 'Personalized Photo Frames & Wall Art',
+    description: 'Personalized photo frames for weddings, birthdays, family moments and special occasions crafted to preserve memories.',
     iconName: 'Frame',
-    deliverables: ['Canvas Photo Frames', 'Gift Collage Frames', 'Digital Portrait Edits', 'High-Res Print Files'],
-    idealFor: 'Birthdays, weddings, anniversaries, and home decor.',
-    highlightTag: 'Premium Wall Art',
+    deliverables: ['Canvas Photo Frames', 'Gift Collage Frames', 'Digital Portrait Prints', 'High-Res Print Masters'],
   },
   {
-    id: 'social-posters',
-    title: 'Social Media Posters & CDPs',
-    subtitle: 'Custom Display Pictures & Event Sheets',
-    description: 'Eye-catching Custom Display Pictures (CDPs), festival posters, birthday wish banners, and social graphics ready for WhatsApp and Instagram.',
+    id: 'branding-social',
+    number: '04',
+    title: 'Branding & Social Media',
+    subtitle: 'Logos, CDPs & Social Creatives',
+    description: 'Logos, promotional graphics, social media creatives and visual identity materials designed to command digital feeds.',
     iconName: 'Sparkles',
-    deliverables: ['Custom Display Pictures (CDPs)', 'Birthday & Tribute Sheets', 'Social Media Posters', 'HD WhatsApp Banners'],
-    idealFor: 'Events, birthday wishes, social media posts, and campaigns.',
-    highlightTag: 'Viral Designs',
+    deliverables: ['Logo & Brand Identity', 'Custom Display Pictures (CDPs)', 'Social Media Creatives', 'Campaign Identity Sets'],
+  },
+];
+
+export const WHY_US_POINTS: TrustPoint[] = [
+  {
+    id: 'creative-thinking',
+    number: '01',
+    title: 'Creative Thinking',
+    description: 'Every project starts with an idea and becomes a unique visual tailored to your goals.',
   },
   {
-    id: 'photo-retouching',
-    title: 'Photo Retouching & Color Correction',
-    subtitle: 'Photo Enhancement & Damage Restoration',
-    description: 'Professional color grading, skin tone retouching, background removal, and old photo restoration to bring out the best in your pictures.',
-    iconName: 'Wand2',
-    deliverables: ['Color Correction & Grading', 'Skin & Portrait Retouching', 'Old Photo Restoration', 'Background Removal'],
-    idealFor: 'Photographers, portrait edits, and old memory restoration.',
-    highlightTag: 'High-Key Retouch',
+    id: 'custom-design',
+    number: '02',
+    title: 'Custom Design',
+    description: 'Designs are created around the client\'s needs rather than relying on generic templates.',
+  },
+  {
+    id: 'attention-detail',
+    number: '03',
+    title: 'Attention to Detail',
+    description: 'Every element is carefully refined before delivery to ensure print and digital perfection.',
+  },
+  {
+    id: 'direct-collaboration',
+    number: '04',
+    title: 'Direct Collaboration',
+    description: 'Simple communication from concept to final design with fast, direct feedback.',
+  },
+];
+
+export const PROCESS_STEPS: ProcessStep[] = [
+  {
+    step: '01',
+    title: 'Discuss',
+    description: 'Understand the client\'s requirements and project goals.',
+  },
+  {
+    step: '02',
+    title: 'Create',
+    description: 'Develop the visual concept and design direction.',
+  },
+  {
+    step: '03',
+    title: 'Refine',
+    description: 'Review and improve the design until it exceeds expectations.',
+  },
+  {
+    step: '04',
+    title: 'Deliver',
+    description: 'Provide the final design ready to use for print or digital.',
   },
 ];
 
@@ -88,7 +146,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     id: 'item-1',
     title: 'Royal Celebration CDP & Digital Poster',
     category: 'social',
-    categoryLabel: 'Social Poster & CDP',
+    categoryLabel: 'Social Media',
     image: '/assets/Photo1.jpeg',
     aspectRatio: 'aspect-[3/4]',
     description: 'Custom birthday tribute poster design featuring bold typography and clean photo integration.',
@@ -101,7 +159,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     id: 'item-2',
     title: 'Custom Photo Frame Art & Restoration',
     category: 'frames',
-    categoryLabel: 'Custom Photo Frame',
+    categoryLabel: 'Custom Frames',
     image: '/assets/photo2.jpeg',
     aspectRatio: 'aspect-[4/5]',
     description: 'Bespoke photo enhancement and frame layout crafted for family keepsake display.',
@@ -113,8 +171,8 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: 'item-3',
     title: 'Portrait Color Correction & Retouch',
-    category: 'retouching',
-    categoryLabel: 'Photo Retouching',
+    category: 'editing',
+    categoryLabel: 'Photo Editing',
     image: '/assets/photo3.jpeg',
     aspectRatio: 'aspect-[1/1]',
     description: 'Professional skin retouching, ambient lighting enhancement, and color grading.',
@@ -126,8 +184,8 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: 'item-4',
     title: 'Outdoor Flex Banner & Event Backdrop',
-    category: 'print',
-    categoryLabel: 'Flex & Banner Design',
+    category: 'flex',
+    categoryLabel: 'Flex & Banners',
     image: '/assets/photo4.jpeg',
     aspectRatio: 'aspect-[16/9]',
     description: 'Large format outdoor flex banner layout engineered with sharp contrast and clear readable text.',
@@ -139,8 +197,8 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: 'item-5',
     title: 'Festival Greeting & Campaign Poster',
-    category: 'social',
-    categoryLabel: 'Social Poster',
+    category: 'posters',
+    categoryLabel: 'Posters',
     image: '/assets/photo5.jpeg',
     aspectRatio: 'aspect-[4/5]',
     description: 'Custom festive greeting poster with clear typography and vibrant colors.',
@@ -152,8 +210,8 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     id: 'item-6',
     title: 'Rakesh Designs Studio Emblem & Identity',
-    category: 'print',
-    categoryLabel: 'Studio Identity',
+    category: 'branding',
+    categoryLabel: 'Branding',
     image: '/assets/logo.png',
     aspectRatio: 'aspect-[1/1]',
     description: 'Official studio emblem representing precision graphics and quality design.',

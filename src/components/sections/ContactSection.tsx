@@ -17,7 +17,7 @@ export default function ContactSection() {
     setSubmitted(true);
 
     const serviceTitle = SERVICES.find((s) => s.id === selectedService)?.title || selectedService;
-    const text = `Hello Rakesh Designs!\n\nNew Project Inquiry:\n- Name: ${name}\n- Contact: ${phone}\n- Service Interest: ${serviceTitle}\n- Details: ${message}`;
+    const text = `Hi Rakesh Designs, I'm interested in getting a design. I'd like to discuss my requirements.\n\nDetails:\n- Name: ${name}\n- Contact: ${phone}\n- Service Interest: ${serviceTitle}\n- Project Brief: ${message}`;
     const encoded = encodeURIComponent(text);
     const waUrl = `https://wa.me/${STUDIO_INFO.whatsappNumber}?text=${encoded}`;
 
@@ -26,13 +26,22 @@ export default function ContactSection() {
     }, 1000);
   };
 
+  const handleViewWork = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById('portfolio');
+    if (element) {
+      const topOffset = element.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="contact" className="py-20 md:py-28 bg-near-black text-light-bg relative border-t border-dark-border/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Column: Real Studio Contact Channels & Social Links */}
+          {/* Left Column: Master Brief Conversion Copy & WhatsApp CTA */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -42,43 +51,19 @@ export default function ContactSection() {
           >
             <div className="inline-flex items-center gap-2 text-xs font-semibold text-warm-orange uppercase tracking-widest px-3.5 py-1 bg-dark-card border border-dark-border rounded-full shadow-sm">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Start a Project</span>
+              <span>Let's Connect</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-light-bg tracking-tight">
-              Get a Quote for Your Next Design Project.
+              Have a project in mind?
             </h2>
 
-            <p className="text-sm sm:text-base text-offwhite-muted leading-relaxed">
-              Whether you need flex printing, bespoke photo frames, or custom social media posters, we are ready to bring your vision to life.
+            <p className="text-base sm:text-lg text-offwhite-muted leading-relaxed font-medium">
+              Let's turn your idea into something people remember.
             </p>
 
-            {/* Real Studio Contact Channels */}
+            {/* Prominent Instant WhatsApp Conversion Card */}
             <div className="space-y-4 pt-2">
-              
-              {/* Direct Phone Call */}
-              <a
-                href={`tel:+91${STUDIO_INFO.phone.replace(/[^0-9]/g, '')}`}
-                data-cursor="magnetic"
-                className="p-5 bg-dark-card border border-dark-border rounded-2xl flex items-center justify-between hover:border-warm-orange hover:shadow-premium-hover transition-all group cursor-pointer"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-warm-orange/10 border border-warm-orange/20 flex items-center justify-center text-warm-orange group-hover:bg-warm-orange group-hover:text-near-black transition-colors">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-offwhite-muted uppercase block">Direct Phone</span>
-                    <span className="font-display font-bold text-base text-light-bg group-hover:text-warm-orange transition-colors">
-                      +91 {STUDIO_INFO.phone}
-                    </span>
-                  </div>
-                </div>
-                <span className="text-xs font-bold text-warm-orange group-hover:translate-x-1 transition-transform">
-                  Call →
-                </span>
-              </a>
-
-              {/* Instant WhatsApp Direct Card */}
               <a
                 href={STUDIO_INFO.whatsappUrl}
                 target="_blank"
@@ -91,74 +76,63 @@ export default function ContactSection() {
                     <MessageSquare className="w-6 h-6 text-near-black" />
                   </div>
                   <div>
-                    <span className="text-xs font-extrabold text-near-black/80 uppercase block">Instant WhatsApp</span>
-                    <span className="font-display font-extrabold text-base text-near-black">
-                      Chat on WhatsApp
+                    <span className="text-xs font-extrabold text-near-black/80 uppercase block">Fast Conversion</span>
+                    <span className="font-display font-extrabold text-lg text-near-black">
+                      Chat on WhatsApp →
                     </span>
                   </div>
                 </div>
-                <span className="text-xs font-extrabold text-near-black group-hover:translate-x-1 transition-transform">
-                  Message →
-                </span>
               </a>
 
-              {/* Instagram Card */}
+              {/* Direct Phone */}
               <a
-                href={STUDIO_INFO.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`tel:+91${STUDIO_INFO.phone.replace(/[^0-9]/g, '')}`}
                 data-cursor="magnetic"
-                className="p-5 bg-dark-card border border-dark-border rounded-2xl flex items-center justify-between hover:border-warm-orange hover:shadow-premium-hover transition-all group cursor-pointer"
+                className="p-4 bg-dark-card border border-dark-border rounded-2xl flex items-center justify-between hover:border-warm-orange transition-all group cursor-pointer"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-warm-orange/10 border border-warm-orange/20 flex items-center justify-center text-warm-orange group-hover:bg-warm-orange group-hover:text-near-black transition-colors">
-                    <Instagram className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-offwhite-muted uppercase block">Instagram Live Work</span>
-                    <span className="font-display font-bold text-base text-light-bg group-hover:text-warm-orange transition-colors">
-                      {STUDIO_INFO.instagramHandle}
-                    </span>
-                  </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-warm-orange" />
+                  <span className="text-xs font-bold text-light-bg">
+                    Direct Phone: +91 {STUDIO_INFO.phone}
+                  </span>
                 </div>
-                <span className="text-xs font-bold text-warm-orange group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
-                  Follow <ArrowUpRight className="w-3.5 h-3.5" />
-                </span>
+                <span className="text-xs text-warm-orange">Call →</span>
               </a>
 
-              {/* Behance Portfolio Link */}
-              <a
-                href={STUDIO_INFO.behanceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="magnetic"
-                className="p-5 bg-dark-card border border-dark-border rounded-2xl flex items-center justify-between hover:border-warm-orange hover:shadow-premium-hover transition-all group cursor-pointer"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-warm-orange/10 border border-warm-orange/20 flex items-center justify-center text-warm-orange group-hover:bg-warm-orange group-hover:text-near-black transition-colors">
-                    <ExternalLink className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-offwhite-muted uppercase block">Behance Studio Portfolio</span>
-                    <span className="font-display font-bold text-base text-light-bg group-hover:text-warm-orange transition-colors">
-                      behance.net/rakeshmangam
-                    </span>
-                  </div>
-                </div>
-                <span className="text-xs font-bold text-warm-orange group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
-                  View <ArrowUpRight className="w-3.5 h-3.5" />
-                </span>
-              </a>
+              {/* Instagram & Behance Links */}
+              <div className="grid grid-cols-2 gap-3 pt-1">
+                <a
+                  href={STUDIO_INFO.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3.5 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center justify-between transition-colors cursor-pointer"
+                >
+                  <span className="flex items-center gap-1.5">
+                    <Instagram className="w-4 h-4 text-warm-orange" />
+                    <span>Instagram</span>
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-warm-orange" />
+                </a>
 
-              {/* Location Badge */}
-              <div className="p-4 bg-near-black border border-dark-border rounded-2xl text-xs space-y-1 text-offwhite-muted flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-warm-orange flex-shrink-0" />
-                <div>
-                  <span className="text-[10px] font-bold text-warm-orange uppercase block">Studio Location</span>
-                  <span className="font-semibold text-light-bg text-sm">{STUDIO_INFO.location}</span>
-                </div>
+                <a
+                  href={STUDIO_INFO.behanceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3.5 bg-dark-card border border-dark-border rounded-xl text-xs font-semibold text-light-bg hover:border-warm-orange flex items-center justify-between transition-colors cursor-pointer"
+                >
+                  <span className="flex items-center gap-1.5">
+                    <ExternalLink className="w-4 h-4 text-warm-orange" />
+                    <span>Behance</span>
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-warm-orange" />
+                </a>
               </div>
 
+              {/* Location Badge */}
+              <div className="p-3.5 bg-near-black border border-dark-border rounded-xl text-xs text-offwhite-muted flex items-center gap-2.5">
+                <MapPin className="w-4 h-4 text-warm-orange flex-shrink-0" />
+                <span>{STUDIO_INFO.location}</span>
+              </div>
             </div>
 
           </motion.div>
@@ -177,10 +151,10 @@ export default function ContactSection() {
                   <CheckCircle2 className="w-8 h-8 text-near-black" />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-light-bg">
-                  Thank You for Your Inquiry!
+                  Inquiry Sent Successfully!
                 </h3>
                 <p className="text-sm text-offwhite-muted max-w-md mx-auto">
-                  Opening WhatsApp to launch direct chat with Rakesh Designs...
+                  Opening WhatsApp to complete your direct consultation...
                 </p>
               </div>
             ) : (
@@ -192,7 +166,7 @@ export default function ContactSection() {
                 {/* Service Selector */}
                 <div>
                   <label className="block text-xs font-bold text-light-bg uppercase tracking-wider mb-2">
-                    Select Discipline Interest
+                    Service Required
                   </label>
                   <select
                     value={selectedService}
@@ -211,12 +185,12 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-light-bg uppercase tracking-wider mb-1.5">
-                      Full Name *
+                      Your Name *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="Your full name"
+                      placeholder="Full Name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl border border-dark-border bg-near-black text-light-bg placeholder:text-offwhite-muted/50 focus:outline-none focus:border-warm-orange text-sm"
@@ -225,12 +199,12 @@ export default function ContactSection() {
 
                   <div>
                     <label className="block text-xs font-bold text-light-bg uppercase tracking-wider mb-1.5">
-                      WhatsApp / Mobile *
+                      Phone / WhatsApp *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="Phone or WhatsApp number"
+                      placeholder="Mobile Number"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl border border-dark-border bg-near-black text-light-bg placeholder:text-offwhite-muted/50 focus:outline-none focus:border-warm-orange text-sm"
@@ -241,26 +215,36 @@ export default function ContactSection() {
                 {/* Message / Requirements */}
                 <div>
                   <label className="block text-xs font-bold text-light-bg uppercase tracking-wider mb-1.5">
-                    Project Details / Requirements
+                    Project Details
                   </label>
                   <textarea
                     rows={4}
                     required
-                    placeholder="Describe your design vision, dimensions, text details, or required delivery date..."
+                    placeholder="Describe your design requirements, dimensions, deadline, or text details..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl border border-dark-border bg-near-black text-light-bg placeholder:text-offwhite-muted/50 focus:outline-none focus:border-warm-orange text-sm resize-none"
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  data-cursor="magnetic"
-                  className="w-full py-4 bg-warm-orange hover:bg-orange-light text-near-black rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-orange-glow transition-all cursor-pointer"
-                >
-                  <Send className="w-4 h-4 text-near-black" />
-                  <span>Submit Inquiry & Connect</span>
-                </button>
+                <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                  <button
+                    type="submit"
+                    data-cursor="magnetic"
+                    className="w-full sm:flex-1 py-4 bg-warm-orange hover:bg-orange-light text-near-black rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-orange-glow transition-all cursor-pointer"
+                  >
+                    <Send className="w-4 h-4 text-near-black" />
+                    <span>Start a Project</span>
+                  </button>
+
+                  <a
+                    href="#portfolio"
+                    onClick={handleViewWork}
+                    className="w-full sm:w-auto px-6 py-4 border border-dark-border hover:border-warm-orange text-light-bg rounded-xl font-semibold text-xs text-center transition-colors cursor-pointer"
+                  >
+                    View Our Work
+                  </a>
+                </div>
               </form>
             )}
           </motion.div>
