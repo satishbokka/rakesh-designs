@@ -10,30 +10,30 @@ interface ServicesSectionProps {
 }
 
 const iconMap: Record<string, React.ReactNode> = {
-  Printer: <Printer className="w-6 h-6 text-warm-coral" />,
-  Frame: <Frame className="w-6 h-6 text-warm-coral" />,
-  Sparkles: <Sparkles className="w-6 h-6 text-warm-coral" />,
-  Wand2: <Wand2 className="w-6 h-6 text-warm-coral" />,
+  Printer: <Printer className="w-6 h-6 text-vivid-teal" />,
+  Frame: <Frame className="w-6 h-6 text-vivid-teal" />,
+  Sparkles: <Sparkles className="w-6 h-6 text-vivid-teal" />,
+  Wand2: <Wand2 className="w-6 h-6 text-vivid-teal" />,
 };
 
 export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
   return (
-    <section id="services" className="py-20 md:py-28 bg-navy-dark text-soft-cream relative border-t border-navy-border/60">
+    <section id="services" className="py-20 md:py-28 bg-dark-bg text-warm-offwhite relative border-t border-navy-border/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold text-warm-coral uppercase tracking-widest px-3.5 py-1 bg-navy-card border border-navy-border rounded-full shadow-sm">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold text-vivid-teal uppercase tracking-widest px-3.5 py-1 bg-navy-card border border-navy-border rounded-full shadow-sm">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Studio Disciplines</span>
+            <span>Studio Services</span>
           </div>
 
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-soft-cream tracking-tight">
-            Bespoke Services & Visual Capabilities
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-warm-offwhite tracking-tight">
+            Design Services & Scope
           </h2>
 
-          <p className="text-sm sm:text-base text-cream-muted">
-            Refined creative disciplines engineered to elevate personal milestones, commercial print campaigns, and digital visual identities.
+          <p className="text-sm sm:text-base text-offwhite-muted">
+            Custom design services tailored for events, commercial printing, social media posts, and photo restoration.
           </p>
         </div>
 
@@ -51,37 +51,37 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
               <div className="space-y-4">
                 {/* Header Row */}
                 <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-indigo-navy border border-navy-border flex items-center justify-center group-hover:border-warm-coral transition-colors">
-                    {iconMap[service.iconName] || <Sparkles className="w-6 h-6 text-warm-coral" />}
+                  <div className="w-12 h-12 rounded-2xl bg-charcoal-navy border border-navy-border flex items-center justify-center group-hover:border-vivid-teal transition-colors">
+                    {iconMap[service.iconName] || <Sparkles className="w-6 h-6 text-vivid-teal" />}
                   </div>
 
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-warm-coral px-3 py-1 bg-indigo-navy rounded-full border border-navy-border">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-vivid-teal px-3 py-1 bg-charcoal-navy rounded-full border border-navy-border">
                     {service.highlightTag}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="font-display text-2xl font-bold text-soft-cream group-hover:text-warm-coral transition-colors">
+                  <h3 className="font-display text-2xl font-bold text-warm-offwhite group-hover:text-vivid-teal transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-xs font-semibold text-warm-coral tracking-wide uppercase mt-0.5">
+                  <p className="text-xs font-semibold text-vivid-teal tracking-wide uppercase mt-0.5">
                     {service.subtitle}
                   </p>
                 </div>
 
-                <p className="text-sm text-cream-muted leading-relaxed">
+                <p className="text-sm text-offwhite-muted leading-relaxed">
                   {service.description}
                 </p>
 
                 {/* Deliverables Checklist */}
                 <div className="pt-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-soft-cream mb-2">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-warm-offwhite mb-2">
                     Key Scope Deliverables:
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {service.deliverables.map((item, dIdx) => (
-                      <div key={dIdx} className="flex items-center gap-2 text-xs text-soft-cream/85">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-warm-coral flex-shrink-0" />
+                      <div key={dIdx} className="flex items-center gap-2 text-xs text-warm-offwhite/85">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-vivid-teal flex-shrink-0" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -91,17 +91,17 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
 
               {/* Action Button */}
               <div className="pt-6 mt-6 border-t border-navy-border/60 flex items-center justify-between">
-                <span className="text-xs text-cream-muted/70 italic">
+                <span className="text-xs text-offwhite-muted/70 italic">
                   Custom quote tailored to project scope
                 </span>
 
                 <button
                   onClick={onOpenQuote}
                   data-cursor="magnetic"
-                  className="px-4 py-2.5 bg-warm-coral hover:bg-coral-light text-indigo-navy text-xs font-extrabold uppercase tracking-wider rounded-xl transition-all flex items-center gap-1.5 shadow-coral-glow"
+                  className="px-4 py-2.5 bg-vivid-teal hover:bg-teal-light text-charcoal-navy text-xs font-extrabold uppercase tracking-wider rounded-xl transition-all flex items-center gap-1.5 shadow-teal-glow"
                 >
                   <span>Request Quote</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-indigo-navy" />
+                  <ArrowRight className="w-3.5 h-3.5 text-charcoal-navy" />
                 </button>
               </div>
             </motion.div>

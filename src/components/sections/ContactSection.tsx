@@ -27,7 +27,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-navy-dark text-soft-cream relative border-t border-navy-border/60">
+    <section id="contact" className="py-20 md:py-28 bg-dark-bg text-warm-offwhite relative border-t border-navy-border/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -40,40 +40,40 @@ export default function ContactSection() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-5 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 text-xs font-semibold text-warm-coral uppercase tracking-widest px-3.5 py-1 bg-navy-card border border-navy-border rounded-full shadow-sm">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold text-vivid-teal uppercase tracking-widest px-3.5 py-1 bg-navy-card border border-navy-border rounded-full shadow-sm">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Start a Conversation</span>
+              <span>Start a Project</span>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-soft-cream tracking-tight">
-              Ready to Craft Your Next Visual Project?
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-warm-offwhite tracking-tight">
+              Get a Quote for Your Next Design Project.
             </h2>
 
-            <p className="text-sm sm:text-base text-cream-muted leading-relaxed">
-              Whether you need large-format flex printing, bespoke canvas frames, or a signature CDP for an upcoming event, we are here to bring your vision to life.
+            <p className="text-sm sm:text-base text-offwhite-muted leading-relaxed">
+              Whether you need flex printing, bespoke photo frames, or custom social media posters, we are ready to bring your vision to life.
             </p>
 
             {/* Real Studio Contact Channels */}
             <div className="space-y-4 pt-2">
               
-              {/* Direct Phone Call / WhatsApp */}
+              {/* Direct Phone Call */}
               <a
                 href={`tel:+91${STUDIO_INFO.phone.replace(/[^0-9]/g, '')}`}
                 data-cursor="magnetic"
-                className="p-5 bg-navy-card border border-navy-border rounded-2xl flex items-center justify-between hover:border-warm-coral hover:shadow-premium-hover transition-all group"
+                className="p-5 bg-navy-card border border-navy-border rounded-2xl flex items-center justify-between hover:border-vivid-teal hover:shadow-premium-hover transition-all group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-warm-coral/10 border border-warm-coral/20 flex items-center justify-center text-warm-coral group-hover:bg-warm-coral group-hover:text-indigo-navy transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-vivid-teal/10 border border-vivid-teal/20 flex items-center justify-center text-vivid-teal group-hover:bg-vivid-teal group-hover:text-charcoal-navy transition-colors">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-cream-muted uppercase block">Direct Phone</span>
-                    <span className="font-display font-bold text-base text-soft-cream group-hover:text-warm-coral transition-colors">
+                    <span className="text-xs font-bold text-offwhite-muted uppercase block">Direct Phone</span>
+                    <span className="font-display font-bold text-base text-warm-offwhite group-hover:text-vivid-teal transition-colors">
                       +91 {STUDIO_INFO.phone}
                     </span>
                   </div>
                 </div>
-                <span className="text-xs font-bold text-warm-coral group-hover:translate-x-1 transition-transform">
+                <span className="text-xs font-bold text-vivid-teal group-hover:translate-x-1 transition-transform">
                   Call →
                 </span>
               </a>
@@ -84,20 +84,20 @@ export default function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="magnetic"
-                className="p-5 bg-warm-coral text-indigo-navy rounded-2xl flex items-center justify-between hover:bg-coral-light hover:shadow-coral-glow transition-all group"
+                className="p-5 bg-vivid-teal text-charcoal-navy rounded-2xl flex items-center justify-between hover:bg-teal-light hover:shadow-teal-glow transition-all group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-indigo-navy/20 flex items-center justify-center text-indigo-navy">
-                    <MessageSquare className="w-6 h-6 text-indigo-navy" />
+                  <div className="w-12 h-12 rounded-xl bg-charcoal-navy/20 flex items-center justify-center text-charcoal-navy">
+                    <MessageSquare className="w-6 h-6 text-charcoal-navy" />
                   </div>
                   <div>
-                    <span className="text-xs font-extrabold text-indigo-navy/80 uppercase block">Instant WhatsApp</span>
-                    <span className="font-display font-extrabold text-base text-indigo-navy">
+                    <span className="text-xs font-extrabold text-charcoal-navy/80 uppercase block">Instant WhatsApp</span>
+                    <span className="font-display font-extrabold text-base text-charcoal-navy">
                       Chat on WhatsApp
                     </span>
                   </div>
                 </div>
-                <span className="text-xs font-extrabold text-indigo-navy group-hover:translate-x-1 transition-transform">
+                <span className="text-xs font-extrabold text-charcoal-navy group-hover:translate-x-1 transition-transform">
                   Message →
                 </span>
               </a>
@@ -108,20 +108,20 @@ export default function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="magnetic"
-                className="p-5 bg-navy-card border border-navy-border rounded-2xl flex items-center justify-between hover:border-warm-coral hover:shadow-premium-hover transition-all group"
+                className="p-5 bg-navy-card border border-navy-border rounded-2xl flex items-center justify-between hover:border-vivid-teal hover:shadow-premium-hover transition-all group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-warm-coral/10 border border-warm-coral/20 flex items-center justify-center text-warm-coral group-hover:bg-warm-coral group-hover:text-indigo-navy transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-vivid-teal/10 border border-vivid-teal/20 flex items-center justify-center text-vivid-teal group-hover:bg-vivid-teal group-hover:text-charcoal-navy transition-colors">
                     <Instagram className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-cream-muted uppercase block">Instagram Live Feed</span>
-                    <span className="font-display font-bold text-base text-soft-cream group-hover:text-warm-coral transition-colors">
+                    <span className="text-xs font-bold text-offwhite-muted uppercase block">Instagram Live Work</span>
+                    <span className="font-display font-bold text-base text-warm-offwhite group-hover:text-vivid-teal transition-colors">
                       {STUDIO_INFO.instagramHandle}
                     </span>
                   </div>
                 </div>
-                <span className="text-xs font-bold text-warm-coral group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
+                <span className="text-xs font-bold text-vivid-teal group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
                   Follow <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
               </a>
@@ -132,30 +132,30 @@ export default function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="magnetic"
-                className="p-5 bg-navy-card border border-navy-border rounded-2xl flex items-center justify-between hover:border-warm-coral hover:shadow-premium-hover transition-all group"
+                className="p-5 bg-navy-card border border-navy-border rounded-2xl flex items-center justify-between hover:border-vivid-teal hover:shadow-premium-hover transition-all group"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-warm-coral/10 border border-warm-coral/20 flex items-center justify-center text-warm-coral group-hover:bg-warm-coral group-hover:text-indigo-navy transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-vivid-teal/10 border border-vivid-teal/20 flex items-center justify-center text-vivid-teal group-hover:bg-vivid-teal group-hover:text-charcoal-navy transition-colors">
                     <ExternalLink className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-cream-muted uppercase block">Behance Studio Portfolio</span>
-                    <span className="font-display font-bold text-base text-soft-cream group-hover:text-warm-coral transition-colors">
+                    <span className="text-xs font-bold text-offwhite-muted uppercase block">Behance Studio Portfolio</span>
+                    <span className="font-display font-bold text-base text-warm-offwhite group-hover:text-vivid-teal transition-colors">
                       behance.net/rakeshmangam
                     </span>
                   </div>
                 </div>
-                <span className="text-xs font-bold text-warm-coral group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
+                <span className="text-xs font-bold text-vivid-teal group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
                   View <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
               </a>
 
               {/* Location Badge */}
-              <div className="p-4 bg-indigo-navy border border-navy-border rounded-2xl text-xs space-y-1 text-cream-muted flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-warm-coral flex-shrink-0" />
+              <div className="p-4 bg-charcoal-navy border border-navy-border rounded-2xl text-xs space-y-1 text-offwhite-muted flex items-center gap-3">
+                <MapPin className="w-5 h-5 text-vivid-teal flex-shrink-0" />
                 <div>
-                  <span className="text-[10px] font-bold text-warm-coral uppercase block">Studio Location</span>
-                  <span className="font-semibold text-soft-cream text-sm">{STUDIO_INFO.location}</span>
+                  <span className="text-[10px] font-bold text-vivid-teal uppercase block">Studio Location</span>
+                  <span className="font-semibold text-warm-offwhite text-sm">{STUDIO_INFO.location}</span>
                 </div>
               </div>
 
@@ -173,34 +173,34 @@ export default function ContactSection() {
           >
             {submitted ? (
               <div className="py-12 text-center space-y-4">
-                <div className="w-16 h-16 bg-warm-coral text-indigo-navy rounded-full flex items-center justify-center mx-auto shadow-coral-glow">
-                  <CheckCircle2 className="w-8 h-8 text-indigo-navy" />
+                <div className="w-16 h-16 bg-vivid-teal text-charcoal-navy rounded-full flex items-center justify-center mx-auto shadow-teal-glow">
+                  <CheckCircle2 className="w-8 h-8 text-charcoal-navy" />
                 </div>
-                <h3 className="font-display text-2xl font-bold text-soft-cream">
+                <h3 className="font-display text-2xl font-bold text-warm-offwhite">
                   Thank You for Your Inquiry!
                 </h3>
-                <p className="text-sm text-cream-muted max-w-md mx-auto">
+                <p className="text-sm text-offwhite-muted max-w-md mx-auto">
                   Opening WhatsApp to launch direct chat with Rakesh Designs...
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <h3 className="font-display text-2xl font-bold text-soft-cream">
+                <h3 className="font-display text-2xl font-bold text-warm-offwhite">
                   Send a Direct Project Brief
                 </h3>
 
                 {/* Service Selector */}
                 <div>
-                  <label className="block text-xs font-bold text-soft-cream uppercase tracking-wider mb-2">
+                  <label className="block text-xs font-bold text-warm-offwhite uppercase tracking-wider mb-2">
                     Select Discipline Interest
                   </label>
                   <select
                     value={selectedService}
                     onChange={(e) => setSelectedService(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-navy-border bg-indigo-navy text-soft-cream focus:outline-none focus:border-warm-coral text-sm font-medium"
+                    className="w-full px-4 py-3 rounded-xl border border-navy-border bg-charcoal-navy text-warm-offwhite focus:outline-none focus:border-vivid-teal text-sm font-medium"
                   >
                     {SERVICES.map((s) => (
-                      <option key={s.id} value={s.id} className="bg-indigo-navy text-soft-cream">
+                      <option key={s.id} value={s.id} className="bg-charcoal-navy text-warm-offwhite">
                         {s.title} ({s.subtitle})
                       </option>
                     ))}
@@ -210,7 +210,7 @@ export default function ContactSection() {
                 {/* Name & Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-soft-cream uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-warm-offwhite uppercase tracking-wider mb-1.5">
                       Full Name *
                     </label>
                     <input
@@ -219,12 +219,12 @@ export default function ContactSection() {
                       placeholder="Your full name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-navy-border bg-indigo-navy text-soft-cream placeholder:text-cream-muted/50 focus:outline-none focus:border-warm-coral text-sm"
+                      className="w-full px-4 py-3 rounded-xl border border-navy-border bg-charcoal-navy text-warm-offwhite placeholder:text-offwhite-muted/50 focus:outline-none focus:border-vivid-teal text-sm"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-soft-cream uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-warm-offwhite uppercase tracking-wider mb-1.5">
                       WhatsApp / Mobile *
                     </label>
                     <input
@@ -233,15 +233,15 @@ export default function ContactSection() {
                       placeholder="Phone or WhatsApp number"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-navy-border bg-indigo-navy text-soft-cream placeholder:text-cream-muted/50 focus:outline-none focus:border-warm-coral text-sm"
+                      className="w-full px-4 py-3 rounded-xl border border-navy-border bg-charcoal-navy text-warm-offwhite placeholder:text-offwhite-muted/50 focus:outline-none focus:border-vivid-teal text-sm"
                     />
                   </div>
                 </div>
 
                 {/* Message / Requirements */}
                 <div>
-                  <label className="block text-xs font-bold text-soft-cream uppercase tracking-wider mb-1.5">
-                    Project Requirements / Deadline
+                  <label className="block text-xs font-bold text-warm-offwhite uppercase tracking-wider mb-1.5">
+                    Project Details / Requirements
                   </label>
                   <textarea
                     rows={4}
@@ -249,16 +249,16 @@ export default function ContactSection() {
                     placeholder="Describe your design vision, dimensions, text details, or required delivery date..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-navy-border bg-indigo-navy text-soft-cream placeholder:text-cream-muted/50 focus:outline-none focus:border-warm-coral text-sm resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-navy-border bg-charcoal-navy text-warm-offwhite placeholder:text-offwhite-muted/50 focus:outline-none focus:border-vivid-teal text-sm resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   data-cursor="magnetic"
-                  className="w-full py-4 bg-warm-coral hover:bg-coral-light text-indigo-navy rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-coral-glow transition-all"
+                  className="w-full py-4 bg-vivid-teal hover:bg-teal-light text-charcoal-navy rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-teal-glow transition-all"
                 >
-                  <Send className="w-4 h-4 text-indigo-navy" />
+                  <Send className="w-4 h-4 text-charcoal-navy" />
                   <span>Submit Inquiry & Connect</span>
                 </button>
               </form>
