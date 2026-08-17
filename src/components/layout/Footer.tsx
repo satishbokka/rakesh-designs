@@ -179,16 +179,20 @@ export default function Footer({ onOpenQuote }: FooterProps) {
           </div>
         </div>
 
-        {/* Final Line */}
+        {/* Final Copyright & Subtle Website Credit */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-offwhite-muted/70 gap-4">
           <p>© {new Date().getFullYear()} {STUDIO_INFO.name}. All Rights Reserved.</p>
+          
           <a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, '#contact')}
-            className="text-warm-orange font-bold hover:underline flex items-center gap-1 cursor-pointer"
+            href="https://www.satishailabs.online/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="magnetic"
+            className="text-[11px] text-offwhite-muted/60 hover:text-warm-orange transition-colors duration-200 inline-flex items-center gap-1 group cursor-pointer"
           >
-            <span>Let's create something memorable</span>
-            <span>→</span>
+            <span>Website crafted by</span>
+            <span className="font-semibold text-light-bg/85 group-hover:text-warm-orange group-hover:underline transition-colors">Satish AI Labs</span>
+            <span className="group-hover:translate-x-0.5 transition-transform duration-200">→</span>
           </a>
         </div>
       </div>
