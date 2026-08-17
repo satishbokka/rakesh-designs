@@ -107,17 +107,18 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
           ))}
         </nav>
 
-        {/* Desktop Social Icons */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Desktop Social Buttons (Instagram & Behance side-by-side) */}
+        <div className="hidden md:flex items-center gap-2.5">
           <a
             href={STUDIO_INFO.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="magnetic"
-            className="p-2 rounded-full border border-dark-border bg-dark-card/80 text-light-bg hover:text-warm-orange hover:border-warm-orange transition-colors flex items-center justify-center cursor-pointer"
-            title={`Follow on Instagram ${STUDIO_INFO.instagramHandle}`}
+            className="px-3.5 py-1.5 rounded-full border border-dark-border bg-dark-card/80 hover:bg-dark-card text-light-bg hover:text-warm-orange hover:border-warm-orange transition-all flex items-center gap-1.5 text-xs font-semibold cursor-pointer shadow-sm hover:scale-[1.02] active:scale-95"
+            title={`Follow live work on Instagram ${STUDIO_INFO.instagramHandle}`}
           >
-            <Instagram className="w-4 h-4" />
+            <Instagram className="w-3.5 h-3.5 text-warm-orange" />
+            <span>Instagram</span>
           </a>
 
           <a
@@ -125,10 +126,11 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="magnetic"
-            className="p-2 rounded-full border border-dark-border bg-dark-card/80 text-light-bg hover:text-warm-orange hover:border-warm-orange transition-colors flex items-center justify-center cursor-pointer"
-            title="View Behance Portfolio"
+            className="px-3.5 py-1.5 rounded-full border border-dark-border bg-dark-card/80 hover:bg-dark-card text-light-bg hover:text-warm-orange hover:border-warm-orange transition-all flex items-center gap-1.5 text-xs font-semibold cursor-pointer shadow-sm hover:scale-[1.02] active:scale-95"
+            title="View full Behance portfolio"
           >
-            <ExternalLink className="w-4 h-4" />
+            <ExternalLink className="w-3.5 h-3.5 text-warm-orange" />
+            <span>Behance</span>
           </a>
         </div>
 
