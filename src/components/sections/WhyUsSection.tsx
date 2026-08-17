@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Lightbulb, Palette, SearchCheck, MessageSquare } from 'lucide-react';
+import { Lightbulb, Palette, SearchCheck, MessageSquare } from 'lucide-react';
 import { WHY_US_POINTS, TrustPoint } from '@/lib/constants';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -19,11 +19,6 @@ export default function WhyUsSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold text-warm-orange uppercase tracking-widest px-3.5 py-1 bg-dark-card border border-dark-border rounded-full shadow-sm">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Studio Value</span>
-          </div>
-
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-light-bg tracking-tight">
             Why Rakesh Designs?
           </h2>
@@ -47,7 +42,7 @@ export default function WhyUsSection() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="w-10 h-10 rounded-xl bg-near-black border border-dark-border flex items-center justify-center group-hover:border-warm-orange transition-colors">
-                    {iconMap[point.number] || <Sparkles className="w-5 h-5 text-warm-orange" />}
+                    {iconMap[point.number] || <Lightbulb className="w-5 h-5 text-warm-orange" />}
                   </div>
 
                   <span className="font-display font-bold text-sm text-warm-orange">

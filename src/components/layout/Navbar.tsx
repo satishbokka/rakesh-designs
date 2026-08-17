@@ -67,15 +67,15 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* Brand Lockup: Larger crisp logo (w-11 h-11) beside Rakesh Designs + CREATIVE STUDIO */}
+        {/* Clean Brand Lockup: Logo + Rakesh Designs */}
         <a
           href="#"
           onClick={(e) => handleNavClick(e, '#')}
           data-cursor="magnetic"
-          className="flex items-center gap-3.5 group cursor-pointer select-none"
+          className="flex items-center gap-3 group cursor-pointer select-none"
           title="Return to top"
         >
-          <div className="relative w-11 h-11 rounded-xl overflow-hidden group-hover:scale-105 group-active:scale-95 transition-transform duration-200 flex-shrink-0">
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden group-hover:scale-105 group-active:scale-95 transition-transform duration-200 flex-shrink-0">
             <Image
               src="/logo.png"
               alt="Rakesh Designs Logo"
@@ -84,14 +84,9 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
               priority
             />
           </div>
-          <div className="flex flex-col justify-center leading-none">
-            <span className="font-display font-extrabold text-xl text-light-bg tracking-tight group-hover:text-warm-orange transition-colors">
-              {STUDIO_INFO.name}
-            </span>
-            <span className="text-[10px] tracking-widest uppercase font-bold text-warm-orange mt-1">
-              CREATIVE STUDIO
-            </span>
-          </div>
+          <span className="font-display font-extrabold text-xl text-light-bg tracking-tight group-hover:text-warm-orange transition-colors">
+            {STUDIO_INFO.name}
+          </span>
         </a>
 
         {/* Desktop Nav Links */}

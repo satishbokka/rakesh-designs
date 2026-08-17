@@ -44,7 +44,7 @@ export default function Preloader() {
         {/* Top Brand Mark */}
         <div className="w-full flex items-center justify-between">
           <span className="text-xs uppercase tracking-widest font-semibold text-warm-orange">
-            {STUDIO_INFO.name} Studio
+            {STUDIO_INFO.name}
           </span>
           <span className="text-xs text-light-bg/60">
             © {new Date().getFullYear()}
@@ -73,7 +73,7 @@ export default function Preloader() {
               {STUDIO_INFO.name}
             </h1>
             <p className="text-[11px] sm:text-xs text-warm-orange uppercase tracking-widest font-semibold">
-              Bespoke Visual Identity & Studio Retouching
+              Bespoke Graphic Design & Photo Editing
             </p>
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function Preloader() {
         {/* Bottom Counter & Progress Line */}
         <div className="w-full max-w-md space-y-3">
           <div className="flex items-center justify-between text-xs font-semibold">
-            <span className="text-light-bg/70 tracking-wider">Initialising Studio</span>
+            <span className="text-light-bg/70 tracking-wider">Initialising Showcase</span>
             <span className="font-display font-bold text-warm-orange text-sm">{progress}%</span>
           </div>
 
