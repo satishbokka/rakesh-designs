@@ -117,15 +117,6 @@ export default function Footer({ onOpenQuote }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="#about"
-                  onClick={(e) => handleNavClick(e, '#about')}
-                  className="hover:text-warm-orange transition-colors cursor-pointer"
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
                   href="#contact"
                   onClick={(e) => handleNavClick(e, '#contact')}
                   className="hover:text-warm-orange transition-colors cursor-pointer"

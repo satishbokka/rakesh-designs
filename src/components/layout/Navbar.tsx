@@ -30,7 +30,6 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
     { label: 'Home', href: '#' },
     { label: 'Work', href: '#portfolio' },
     { label: 'Services', href: '#services' },
-    { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];
 
