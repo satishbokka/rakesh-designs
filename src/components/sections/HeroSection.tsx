@@ -79,7 +79,7 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
                 data-cursor="magnetic"
                 className="px-7 py-4 border border-dark-border hover:border-warm-orange bg-dark-card/80 hover:bg-dark-light text-light-bg font-semibold text-sm rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer"
               >
-                <span>Get in Touch</span>
+                <span>Let's talk</span>
               </a>
             </div>
 

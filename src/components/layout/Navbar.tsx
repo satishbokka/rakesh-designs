@@ -66,7 +66,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Real Brand Logo & Name (Acts as Home smooth-scroll link) */}
+        {/* Real Brand Logo & Name */}
         <a
           href="#"
           onClick={(e) => handleNavClick(e, '#')}
@@ -137,7 +137,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             data-cursor="magnetic"
             className="px-5 py-2 bg-warm-orange hover:bg-orange-light text-near-black text-xs uppercase tracking-wider font-extrabold rounded-full shadow-orange-glow hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer ml-1"
           >
-            <span>Get in Touch</span>
+            <span>Let's talk</span>
             <ArrowRight className="w-3.5 h-3.5 text-near-black" />
           </a>
         </div>
@@ -208,7 +208,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
                 onClick={(e) => handleNavClick(e, '#contact')}
                 className="w-full py-3.5 bg-warm-orange text-near-black rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 shadow-orange-glow active:scale-95 transition-all cursor-pointer text-center"
               >
-                <span>Get in Touch</span>
+                <span>Let's talk</span>
                 <ArrowRight className="w-4 h-4 text-near-black" />
               </a>
             </div>

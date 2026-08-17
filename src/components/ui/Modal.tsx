@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Sparkles, CheckCircle2, MessageSquare } from 'lucide-react';
+import { X, CheckCircle2, MessageSquare } from 'lucide-react';
 import { PortfolioItem, STUDIO_INFO } from '@/lib/constants';
 
 interface ModalProps {
@@ -79,7 +79,7 @@ export default function Modal({ item, onClose }: ModalProps) {
               </div>
             </div>
 
-            {/* CTA Footer */}
+            {/* Direct WhatsApp Action */}
             <div className="pt-4 border-t border-dark-border/60 flex flex-col sm:flex-row gap-3">
               <a
                 href={STUDIO_INFO.whatsappUrl}
@@ -89,7 +89,7 @@ export default function Modal({ item, onClose }: ModalProps) {
                 className="w-full py-3.5 bg-warm-orange hover:bg-orange-light text-near-black font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-orange-glow transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4 text-near-black" />
-                <span>Chat on WhatsApp →</span>
+                <span>WhatsApp →</span>
               </a>
             </div>
           </div>

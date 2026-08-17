@@ -161,7 +161,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 data-cursor="magnetic"
                 className="px-5 py-2.5 bg-warm-orange hover:bg-orange-light text-near-black rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all shadow-orange-glow cursor-pointer inline-flex items-center justify-center gap-1.5"
               >
-                <span>Get in Touch</span>
+                <span>Let's talk</span>
                 <ArrowRight className="w-3.5 h-3.5 text-near-black" />
               </a>
 

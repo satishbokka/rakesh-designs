@@ -108,7 +108,7 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
                   data-cursor="magnetic"
                   className="px-4 py-2.5 bg-warm-orange hover:bg-orange-light text-near-black text-xs font-extrabold uppercase tracking-wider rounded-xl transition-all flex items-center gap-1.5 shadow-orange-glow cursor-pointer"
                 >
-                  <span>Get in Touch</span>
+                  <span>Let's talk</span>
                   <ArrowRight className="w-3.5 h-3.5 text-near-black" />
                 </a>
               </div>
