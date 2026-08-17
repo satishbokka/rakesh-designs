@@ -44,11 +44,12 @@ function SequentialPhotoCard({
 
     const explodeFactor = Math.sin((1 - Math.abs(normPos)) * Math.PI);
     
-    const targetZ = normPos * -3;
-    const targetX = normPos * 1.8;
-    const targetRotY = normPos * -0.4;
-    const targetRotX = (1 - explodeFactor) * 0.2;
-    const targetScale = 1.8 + explodeFactor * 0.3;
+    const targetZ = normPos * -2.5;
+    const targetX = normPos * 1.6;
+    const targetRotY = normPos * -0.35;
+    const targetRotX = (1 - explodeFactor) * 0.15;
+    // Substantially larger scale for flagship presentation
+    const targetScale = 1.35 + explodeFactor * 0.25;
 
     meshRef.current.position.x += (targetX - meshRef.current.position.x) * 0.12;
     meshRef.current.position.z += (targetZ - meshRef.current.position.z) * 0.12;
@@ -65,8 +66,9 @@ function SequentialPhotoCard({
   });
 
   return (
-    <mesh ref={meshRef} position={[0, 0, -5]}>
-      <planeGeometry args={[2.2, 2.8]} />
+    <mesh ref={meshRef} position={[0, 0, -4]}>
+      {/* Substantially larger flagship plane (3.0 x 4.0) */}
+      <planeGeometry args={[3.0, 4.0]} />
       <meshStandardMaterial
         map={texture}
         roughness={0.2}
@@ -84,10 +86,10 @@ function SceneGroup({ progress }: { progress: number }) {
 
   useFrame((state) => {
     if (!groupRef.current) return;
-    const mx = state.mouse.x * 0.15;
-    const my = state.mouse.y * 0.15;
-    groupRef.current.rotation.y = mx * 0.15;
-    groupRef.current.rotation.x = -my * 0.15;
+    const mx = state.mouse.x * 0.12;
+    const my = state.mouse.y * 0.12;
+    groupRef.current.rotation.y = mx * 0.12;
+    groupRef.current.rotation.x = -my * 0.12;
   });
 
   return (
@@ -102,11 +104,11 @@ function SceneGroup({ progress }: { progress: number }) {
         />
       ))}
 
-      {/* Ambient Exact Brand Orange (#FF8900) Particle Atmosphere */}
+      {/* Ambient Brand Orange (#FF8900) Particle Atmosphere */}
       <DreiSparkles
         count={70}
-        scale={7}
-        size={3}
+        scale={8}
+        size={3.5}
         speed={0.4}
         color="#FF8900"
       />
@@ -118,19 +120,19 @@ export default function SignatureScrollCanvas({ progress }: { progress: number }
   return (
     <div className="w-full h-full relative cursor-grab active:cursor-grabbing">
       <Canvas
-        camera={{ position: [0, 0, 4.5], fov: 45 }}
+        camera={{ position: [0, 0, 4.0], fov: 45 }}
         gl={{ antialias: true, alpha: true, failIfMajorPerformanceCaveat: false }}
       >
         <color attach="background" args={['#080808']} />
-        <ambientLight intensity={1.1} />
+        <ambientLight intensity={1.2} />
         <spotLight
           position={[5, 8, 5]}
           angle={0.4}
           penumbra={0.8}
-          intensity={2.2}
+          intensity={2.4}
           color="#F7F5F2"
         />
-        <pointLight position={[-4, -4, 3]} intensity={1.6} color="#FF8900" />
+        <pointLight position={[-4, -4, 3]} intensity={1.8} color="#FF8900" />
         <Suspense fallback={null}>
           <SceneGroup progress={progress} />
         </Suspense>

@@ -59,35 +59,37 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b ${
         scrolled
-          ? 'py-3 bg-near-black/90 backdrop-blur-xl border-b border-dark-border/80 shadow-premium'
-          : 'py-5 bg-transparent'
+          ? 'py-3 bg-near-black/95 backdrop-blur-xl border-dark-border/40 shadow-premium'
+          : 'py-4 bg-near-black/80 backdrop-blur-md border-dark-border/20'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Real Brand Logo & Name */}
+        
+        {/* Brand Lockup: Larger crisp logo (w-11 h-11) beside Rakesh Designs + CREATIVE STUDIO */}
         <a
           href="#"
           onClick={(e) => handleNavClick(e, '#')}
           data-cursor="magnetic"
-          className="flex items-center gap-3 group cursor-pointer select-none"
+          className="flex items-center gap-3.5 group cursor-pointer select-none"
           title="Return to top"
         >
-          <div className="relative w-9 h-9 rounded-lg overflow-hidden group-hover:scale-110 group-active:scale-95 transition-transform duration-200">
+          <div className="relative w-11 h-11 rounded-xl overflow-hidden group-hover:scale-105 group-active:scale-95 transition-transform duration-200 flex-shrink-0">
             <Image
               src="/logo.png"
               alt="Rakesh Designs Logo"
               fill
               className="object-contain"
+              priority
             />
           </div>
-          <div className="flex flex-col">
-            <span className="font-display font-bold text-lg text-light-bg tracking-tight group-hover:text-warm-orange transition-colors">
+          <div className="flex flex-col justify-center leading-none">
+            <span className="font-display font-extrabold text-xl text-light-bg tracking-tight group-hover:text-warm-orange transition-colors">
               {STUDIO_INFO.name}
             </span>
-            <span className="text-[10px] tracking-widest uppercase font-semibold text-warm-orange">
-              Creative Studio
+            <span className="text-[10px] tracking-widest uppercase font-bold text-warm-orange mt-1">
+              CREATIVE STUDIO
             </span>
           </div>
         </a>
@@ -100,7 +102,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               data-cursor="magnetic"
-              className="text-sm font-medium text-light-bg/80 hover:text-warm-orange transition-colors tracking-wide cursor-pointer"
+              className="text-sm font-semibold text-light-bg/85 hover:text-warm-orange transition-colors tracking-wide cursor-pointer py-1"
             >
               {link.label}
             </a>
