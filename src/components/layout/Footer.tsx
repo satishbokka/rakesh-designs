@@ -10,6 +10,19 @@ interface FooterProps {
 }
 
 export default function Footer({ onOpenQuote }: FooterProps) {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      const topOffset = element.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({
+        top: topOffset,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <footer className="bg-dark-bg text-warm-offwhite pt-16 pb-12 border-t border-navy-border relative overflow-hidden">
       {/* Subtle Background Glow */}
@@ -72,22 +85,38 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             </h4>
             <ul className="space-y-2 text-sm text-offwhite-muted">
               <li>
-                <a href="#portfolio" className="hover:text-vivid-teal transition-colors">
-                  Interactive 3D Gallery
+                <a
+                  href="#portfolio"
+                  onClick={(e) => handleNavClick(e, '#portfolio')}
+                  className="hover:text-vivid-teal transition-colors"
+                >
+                  Work Showcase
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-vivid-teal transition-colors">
+                <a
+                  href="#services"
+                  onClick={(e) => handleNavClick(e, '#services')}
+                  className="hover:text-vivid-teal transition-colors"
+                >
                   Services & Scope
                 </a>
               </li>
               <li>
-                <a href="#about" className="hover:text-vivid-teal transition-colors">
+                <a
+                  href="#about"
+                  onClick={(e) => handleNavClick(e, '#about')}
+                  className="hover:text-vivid-teal transition-colors"
+                >
                   Studio Story & Craft
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-vivid-teal transition-colors">
+                <a
+                  href="#contact"
+                  onClick={(e) => handleNavClick(e, '#contact')}
+                  className="hover:text-vivid-teal transition-colors"
+                >
                   Start a Project / Inquiry
                 </a>
               </li>

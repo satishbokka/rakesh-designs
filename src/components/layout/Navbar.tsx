@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Menu, X, Instagram, ExternalLink, Sparkles } from 'lucide-react';
 import { STUDIO_INFO } from '@/lib/constants';
 
 interface NavbarProps {
@@ -33,6 +33,25 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
     { label: 'Contact', href: '#contact' },
   ];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+
+    if (element) {
+      // Delay scroll slightly to allow mobile menu drawer unmount
+      setTimeout(() => {
+        const topOffset = element.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({
+          top: topOffset,
+          behavior: 'smooth',
+        });
+      }, 100);
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
@@ -43,7 +62,15 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo & Name (Unbordered clean emblem) */}
-        <a href="#" data-cursor="magnetic" className="flex items-center gap-3 group">
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          data-cursor="magnetic"
+          className="flex items-center gap-3 group"
+        >
           <div className="relative w-9 h-9 rounded-lg overflow-hidden group-hover:scale-105 transition-transform">
             <Image
               src="/assets/logo.png"
@@ -68,6 +95,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             <a
               key={link.label}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               data-cursor="magnetic"
               className="text-sm font-medium text-warm-offwhite/80 hover:text-vivid-teal transition-colors tracking-wide"
             >
@@ -83,10 +111,10 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="magnetic"
-            className="text-xs font-semibold text-warm-offwhite/90 hover:text-vivid-teal transition-colors flex items-center gap-1"
+            className="p-2 rounded-full border border-navy-border bg-navy-card/80 text-warm-offwhite hover:text-vivid-teal hover:border-vivid-teal transition-colors flex items-center justify-center"
+            title={`Follow on Instagram ${STUDIO_INFO.instagramHandle}`}
           >
-            <span>{STUDIO_INFO.instagramHandle}</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <Instagram className="w-4 h-4" />
           </a>
 
           <button
@@ -103,10 +131,10 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           data-cursor="magnetic"
-          className="md:hidden p-2 rounded-xl text-warm-offwhite hover:bg-navy-card transition-colors"
+          className="md:hidden p-2.5 rounded-xl text-warm-offwhite bg-navy-card border border-navy-border hover:border-vivid-teal transition-colors"
           aria-label="Toggle Navigation Menu"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? <X className="w-6 h-6 text-vivid-teal" /> : <Menu className="w-6 h-6 text-warm-offwhite" />}
         </button>
       </div>
 
@@ -117,48 +145,55 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-charcoal-navy border-b border-navy-border px-6 py-6 space-y-4 shadow-2xl"
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="md:hidden bg-charcoal-navy border-b border-navy-border px-6 py-6 space-y-4 shadow-2xl overflow-hidden"
           >
             <div className="flex flex-col space-y-3">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-semibold text-warm-offwhite hover:text-vivid-teal transition-colors py-1.5"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="text-lg font-bold text-warm-offwhite hover:text-vivid-teal transition-colors py-2 border-b border-navy-border/40 flex items-center justify-between"
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  <span className="text-vivid-teal text-xs">→</span>
                 </a>
               ))}
             </div>
 
-            <div className="pt-4 border-t border-navy-border/60 flex flex-col space-y-3">
-              <a
-                href={STUDIO_INFO.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-semibold text-warm-offwhite flex items-center justify-between"
-              >
-                <span>Instagram Profile</span>
-                <span className="text-vivid-teal">{STUDIO_INFO.instagramHandle}</span>
-              </a>
+            <div className="pt-4 flex flex-col space-y-3">
+              <div className="flex items-center gap-3">
+                <a
+                  href={STUDIO_INFO.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-2.5 px-4 bg-navy-card border border-navy-border rounded-xl text-xs font-semibold text-warm-offwhite hover:border-vivid-teal flex items-center justify-between transition-colors"
+                >
+                  <span className="flex items-center gap-2">
+                    <Instagram className="w-4 h-4 text-vivid-teal" />
+                    <span>Instagram</span>
+                  </span>
+                  <span className="text-vivid-teal text-[10px]">{STUDIO_INFO.instagramHandle}</span>
+                </a>
 
-              <a
-                href={STUDIO_INFO.behanceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-semibold text-warm-offwhite flex items-center justify-between"
-              >
-                <span>Behance Portfolio</span>
-                <span className="text-vivid-teal">Behance</span>
-              </a>
+                <a
+                  href={STUDIO_INFO.behanceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-2.5 px-4 bg-navy-card border border-navy-border rounded-xl text-xs font-semibold text-warm-offwhite hover:border-vivid-teal flex items-center gap-1.5 transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4 text-vivid-teal" />
+                  <span>Behance</span>
+                </a>
+              </div>
 
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenQuote();
                 }}
-                className="w-full py-3 bg-vivid-teal text-charcoal-navy rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 shadow-teal-glow"
+                className="w-full py-3.5 bg-vivid-teal text-charcoal-navy rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 shadow-teal-glow"
               >
                 <Sparkles className="w-4 h-4 text-charcoal-navy" />
                 <span>Start a Project</span>
