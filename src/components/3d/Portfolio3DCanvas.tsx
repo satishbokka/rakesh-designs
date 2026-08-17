@@ -32,9 +32,9 @@ function CarouselCard({ item, angle, radius, rotationOffset, onSelect, isMobile 
     meshRef.current.position.z += (z - meshRef.current.position.z) * 0.1;
     meshRef.current.rotation.y += (rotY - meshRef.current.rotation.y) * 0.1;
 
-    // Substantially larger front scale to occupy 60-80% of showcase area
-    const baseScale = isMobile ? 1.35 : 1.45;
-    const sideScale = isMobile ? 0.75 : 0.85;
+    // Center artwork occupies ~65-80% of showcase area on mobile
+    const baseScale = isMobile ? 1.55 : 1.45;
+    const sideScale = isMobile ? 0.62 : 0.82;
     const targetScale = hovered ? baseScale * 1.08 : isFront ? baseScale : sideScale;
 
     meshRef.current.scale.x += (targetScale - meshRef.current.scale.x) * 0.1;
@@ -58,7 +58,7 @@ function CarouselCard({ item, angle, radius, rotationOffset, onSelect, isMobile 
         setHovered(false);
       }}
     >
-      {/* Substantially larger plane dimensions (2.6 x 3.4) */}
+      {/* Natural aspect ratio plane dimensions */}
       <planeGeometry args={[2.6, 3.4]} />
       <meshStandardMaterial
         map={texture}
@@ -80,7 +80,7 @@ interface CarouselGroupProps {
 function CarouselGroup({ items, rotationOffset, onSelect, isMobile }: CarouselGroupProps) {
   const groupRef = useRef<Group>(null);
   const count = items.length || 1;
-  const radius = isMobile ? 3.8 : 4.4;
+  const radius = isMobile ? 3.6 : 4.4;
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
@@ -140,7 +140,7 @@ export default function Portfolio3DCanvas({
     if (!isDragging.current) return;
     const deltaX = e.clientX - previousTouchX.current;
     previousTouchX.current = e.clientX;
-    setRotationOffset((prev) => prev + deltaX * 0.006);
+    setRotationOffset((prev) => prev + deltaX * 0.007);
   };
 
   const handlePointerUp = () => {
@@ -148,12 +148,12 @@ export default function Portfolio3DCanvas({
   };
 
   if (!mounted) {
-    return <div className="w-full h-[480px] sm:h-[550px] md:h-[620px] bg-dark-card rounded-3xl animate-pulse" />;
+    return <div className="w-full h-[420px] sm:h-[540px] md:h-[640px] bg-dark-card rounded-3xl animate-pulse" />;
   }
 
   if (hasError) {
     return (
-      <div className="w-full h-[480px] bg-dark-card rounded-3xl p-6 flex items-center justify-center text-center border border-dark-border">
+      <div className="w-full h-[420px] bg-dark-card rounded-3xl p-6 flex items-center justify-center text-center border border-dark-border">
         <p className="text-sm font-semibold text-light-bg">
           WebGL preview suspended. Switch to Grid View above to view all portfolio items.
         </p>
@@ -163,14 +163,14 @@ export default function Portfolio3DCanvas({
 
   return (
     <div
-      className="w-full h-[480px] sm:h-[560px] md:h-[640px] relative select-none cursor-grab active:cursor-grabbing rounded-3xl overflow-hidden bg-gradient-to-b from-dark-card/90 via-near-black to-near-black border border-dark-border shadow-premium"
+      className="w-full h-[420px] sm:h-[540px] md:h-[640px] relative select-none cursor-grab active:cursor-grabbing rounded-3xl overflow-hidden bg-gradient-to-b from-dark-card/90 via-near-black to-near-black border border-dark-border shadow-premium"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
     >
       <Canvas
-        camera={{ position: [0, 0, isMobile ? 4.2 : 3.8], fov: isMobile ? 52 : 45 }}
+        camera={{ position: [0, 0, isMobile ? 3.4 : 3.8], fov: isMobile ? 50 : 45 }}
         gl={{ antialias: true, alpha: true, failIfMajorPerformanceCaveat: false }}
         onCreated={({ gl }) => {
           gl.domElement.addEventListener('webglcontextlost', (e) => {
@@ -193,10 +193,10 @@ export default function Portfolio3DCanvas({
         </Suspense>
       </Canvas>
 
-      {/* Interactive Helper Overlay */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 bg-near-black/90 border border-dark-border text-light-bg text-xs tracking-wider rounded-full backdrop-blur-md shadow-lg pointer-events-none z-10">
-        <span className="w-2 h-2 rounded-full bg-warm-orange animate-ping" />
-        Drag left / right to rotate 3D showcase • Click artwork for preview
+      {/* Exact Instruction Overlay */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3.5 py-1.5 bg-near-black/90 border border-dark-border text-light-bg/90 text-[11px] tracking-wider rounded-full backdrop-blur-md shadow-lg pointer-events-none z-10 whitespace-nowrap">
+        <span className="w-1.5 h-1.5 rounded-full bg-warm-orange animate-ping" />
+        <span>Drag left / right • Tap to view</span>
       </div>
     </div>
   );

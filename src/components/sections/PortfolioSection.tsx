@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Portfolio3DCanvas = dynamic(() => import('@/components/3d/Portfolio3DCanvas'), {
   ssr: false,
-  loading: () => <div className="w-full h-[500px] bg-dark-card/50 rounded-3xl animate-pulse" />,
+  loading: () => <div className="w-full h-[420px] sm:h-[540px] md:h-[640px] bg-dark-card/50 rounded-3xl animate-pulse" />,
 });
 
 interface PortfolioSectionProps {
@@ -73,11 +73,11 @@ export default function PortfolioSection({ onOpenQuote }: PortfolioSectionProps)
   };
 
   return (
-    <section ref={sectionRef} id="portfolio" className="py-20 md:py-28 bg-near-black text-light-bg relative border-t border-dark-border/60">
+    <section ref={sectionRef} id="portfolio" className="py-20 md:py-28 bg-near-black text-light-bg relative border-t border-dark-border/60 scroll-mt-24">
       <div ref={pinWrapperRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 pt-4">
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 text-xs font-semibold text-warm-orange uppercase tracking-widest px-3.5 py-1 bg-dark-card border border-dark-border rounded-full shadow-sm">
               <Sparkles className="w-3.5 h-3.5" />
@@ -157,11 +157,11 @@ export default function PortfolioSection({ onOpenQuote }: PortfolioSectionProps)
             </div>
 
             {/* 3D Controls Bar */}
-            <div className="flex items-center justify-between px-4 py-2 bg-dark-card/60 border border-dark-border rounded-2xl">
+            <div className="flex items-center justify-between px-4 py-2.5 bg-dark-card/60 border border-dark-border rounded-2xl">
               <button
                 onClick={handlePrev}
                 data-cursor="magnetic"
-                className="px-4 py-2 bg-near-black border border-dark-border hover:border-warm-orange rounded-xl text-xs font-bold text-light-bg flex items-center gap-1 transition-all shadow-sm cursor-pointer"
+                className="px-3.5 py-2 sm:px-4 sm:py-2 bg-near-black border border-dark-border hover:border-warm-orange rounded-xl text-[11px] sm:text-xs font-bold text-light-bg flex items-center gap-1 transition-all shadow-sm cursor-pointer whitespace-nowrap"
               >
                 <ChevronLeft className="w-4 h-4 text-warm-orange" />
                 <span>Rotate Prev</span>
@@ -174,7 +174,7 @@ export default function PortfolioSection({ onOpenQuote }: PortfolioSectionProps)
               <button
                 onClick={handleNext}
                 data-cursor="magnetic"
-                className="px-4 py-2 bg-near-black border border-dark-border hover:border-warm-orange rounded-xl text-xs font-bold text-light-bg flex items-center gap-1 transition-all shadow-sm cursor-pointer"
+                className="px-3.5 py-2 sm:px-4 sm:py-2 bg-near-black border border-dark-border hover:border-warm-orange rounded-xl text-[11px] sm:text-xs font-bold text-light-bg flex items-center gap-1 transition-all shadow-sm cursor-pointer whitespace-nowrap"
               >
                 <span>Rotate Next</span>
                 <ChevronRight className="w-4 h-4 text-warm-orange" />
