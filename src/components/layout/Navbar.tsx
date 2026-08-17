@@ -41,7 +41,6 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
     const element = document.getElementById(targetId);
 
     if (element) {
-      // Delay scroll slightly to allow mobile menu drawer unmount
       setTimeout(() => {
         const topOffset = element.getBoundingClientRect().top + window.scrollY - 70;
         window.scrollTo({
@@ -50,6 +49,12 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
         });
       }, 100);
     }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -61,17 +66,15 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo & Name (Unbordered clean emblem) */}
+        {/* Brand Logo & Name (Acts as Home smooth-scroll link) */}
         <a
           href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
+          onClick={handleLogoClick}
           data-cursor="magnetic"
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-3 group cursor-pointer select-none"
+          title="Return to top"
         >
-          <div className="relative w-9 h-9 rounded-lg overflow-hidden group-hover:scale-105 transition-transform">
+          <div className="relative w-9 h-9 rounded-lg overflow-hidden group-hover:scale-110 group-active:scale-95 transition-transform duration-200">
             <Image
               src="/assets/logo.png"
               alt="Rakesh Designs Logo"
@@ -83,7 +86,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             <span className="font-display font-bold text-lg text-warm-offwhite tracking-tight group-hover:text-vivid-teal transition-colors">
               {STUDIO_INFO.name}
             </span>
-            <span className="text-[10px] tracking-widest uppercase font-semibold text-vivid-teal">
+            <span className="text-[10px] tracking-widest uppercase font-semibold text-vivid-teal group-hover:underline">
               Creative Studio
             </span>
           </div>
@@ -97,7 +100,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               data-cursor="magnetic"
-              className="text-sm font-medium text-warm-offwhite/80 hover:text-vivid-teal transition-colors tracking-wide"
+              className="text-sm font-medium text-warm-offwhite/80 hover:text-vivid-teal transition-colors tracking-wide cursor-pointer"
             >
               {link.label}
             </a>
@@ -111,7 +114,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="magnetic"
-            className="p-2 rounded-full border border-navy-border bg-navy-card/80 text-warm-offwhite hover:text-vivid-teal hover:border-vivid-teal transition-colors flex items-center justify-center"
+            className="p-2 rounded-full border border-navy-border bg-navy-card/80 text-warm-offwhite hover:text-vivid-teal hover:border-vivid-teal transition-colors flex items-center justify-center cursor-pointer"
             title={`Follow on Instagram ${STUDIO_INFO.instagramHandle}`}
           >
             <Instagram className="w-4 h-4" />
@@ -120,7 +123,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
           <button
             onClick={onOpenQuote}
             data-cursor="magnetic"
-            className="px-5 py-2.5 bg-vivid-teal hover:bg-teal-light text-charcoal-navy text-xs uppercase tracking-wider font-extrabold rounded-full shadow-teal-glow hover:scale-[1.02] transition-all flex items-center gap-1.5"
+            className="px-5 py-2.5 bg-vivid-teal hover:bg-teal-light text-charcoal-navy text-xs uppercase tracking-wider font-extrabold rounded-full shadow-teal-glow hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5 text-charcoal-navy" />
             <span>Start a Project</span>
@@ -131,7 +134,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           data-cursor="magnetic"
-          className="md:hidden p-2.5 rounded-xl text-warm-offwhite bg-navy-card border border-navy-border hover:border-vivid-teal transition-colors"
+          className="md:hidden p-2.5 rounded-xl text-warm-offwhite bg-navy-card border border-navy-border hover:border-vivid-teal transition-colors cursor-pointer"
           aria-label="Toggle Navigation Menu"
         >
           {mobileMenuOpen ? <X className="w-6 h-6 text-vivid-teal" /> : <Menu className="w-6 h-6 text-warm-offwhite" />}
@@ -154,7 +157,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-lg font-bold text-warm-offwhite hover:text-vivid-teal transition-colors py-2 border-b border-navy-border/40 flex items-center justify-between"
+                  className="text-lg font-bold text-warm-offwhite hover:text-vivid-teal transition-colors py-2 border-b border-navy-border/40 flex items-center justify-between cursor-pointer"
                 >
                   <span>{link.label}</span>
                   <span className="text-vivid-teal text-xs">→</span>
@@ -168,7 +171,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
                   href={STUDIO_INFO.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2.5 px-4 bg-navy-card border border-navy-border rounded-xl text-xs font-semibold text-warm-offwhite hover:border-vivid-teal flex items-center justify-between transition-colors"
+                  className="flex-1 py-2.5 px-4 bg-navy-card border border-navy-border rounded-xl text-xs font-semibold text-warm-offwhite hover:border-vivid-teal flex items-center justify-between transition-colors cursor-pointer"
                 >
                   <span className="flex items-center gap-2">
                     <Instagram className="w-4 h-4 text-vivid-teal" />
@@ -181,7 +184,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
                   href={STUDIO_INFO.behanceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-2.5 px-4 bg-navy-card border border-navy-border rounded-xl text-xs font-semibold text-warm-offwhite hover:border-vivid-teal flex items-center gap-1.5 transition-colors"
+                  className="py-2.5 px-4 bg-navy-card border border-navy-border rounded-xl text-xs font-semibold text-warm-offwhite hover:border-vivid-teal flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <ExternalLink className="w-4 h-4 text-vivid-teal" />
                   <span>Behance</span>
@@ -193,7 +196,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
                   setMobileMenuOpen(false);
                   onOpenQuote();
                 }}
-                className="w-full py-3.5 bg-vivid-teal text-charcoal-navy rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 shadow-teal-glow"
+                className="w-full py-3.5 bg-vivid-teal text-charcoal-navy rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 shadow-teal-glow active:scale-95 transition-all cursor-pointer"
               >
                 <Sparkles className="w-4 h-4 text-charcoal-navy" />
                 <span>Start a Project</span>
