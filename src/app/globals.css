@@ -48,7 +48,7 @@ html.lenis, html.lenis body {
 }
 
 ::selection {
-  background-color: #F28C28;
+  background-color: #FF8900;
   color: #0D0D0D;
 }
 
@@ -60,16 +60,16 @@ html.lenis, html.lenis body {
   background: #050505;
 }
 ::-webkit-scrollbar-thumb {
-  background: #F28C28;
+  background: #FF8900;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFAA54;
+  background: #FFA333;
 }
 
 /* Ambient Background Grain & Glow Effects */
 .bg-navy-gradient {
-  background: radial-gradient(circle at 50% 0%, rgba(242, 140, 40, 0.14) 0%, rgba(13, 13, 13, 1) 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(255, 137, 0, 0.14) 0%, rgba(13, 13, 13, 1) 70%);
 }
 
 .bg-navy-card {
@@ -84,14 +84,14 @@ html.lenis, html.lenis body {
 }
 
 .glass-orange {
-  background: rgba(242, 140, 40, 0.15);
+  background: rgba(255, 137, 0, 0.15);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(242, 140, 40, 0.3);
+  border: 1px solid rgba(255, 137, 0, 0.3);
 }
 
 .text-teal-gradient {
-  background: linear-gradient(135deg, #F28C28 0%, #FFAA54 100%);
+  background: linear-gradient(135deg, #FF8900 0%, #FFA333 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
