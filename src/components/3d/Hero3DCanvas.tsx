@@ -96,13 +96,24 @@ export default function Hero3DCanvas() {
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    // Defer WebGL initialization until after the hero text / CTAs have painted.
+    // requestIdleCallback lets the browser finish the first meaningful paint first;
+    // fall back to a short setTimeout for Safari which lacks rIC support.
+    const schedule =
+      typeof window !== 'undefined' && 'requestIdleCallback' in window
+        ? (cb: () => void) => (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(cb)
+        : (cb: () => void) => setTimeout(cb, 50);
+
+    schedule(() => {
+      setMounted(true);
+      const checkMobile = () => setIsMobile(window.innerWidth < 768);
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+    });
+
+    return () => {
+      // cleanup is best-effort; the listener is attached only after mount
     };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   if (!mounted) {

@@ -19,11 +19,31 @@ const SignatureScrollCanvas = dynamic(
 
 export default function SignatureScrollSection() {
   const [progress, setProgress] = useState(0);
+  const [canvasReady, setCanvasReady] = useState(false);
   const triggerRef = useRef<HTMLDivElement>(null);
   const pinTargetRef = useRef<HTMLDivElement>(null);
 
   const showcaseItems = PORTFOLIO_ITEMS.slice(0, 5);
   const totalItems = showcaseItems.length;
+
+  // Lazy-mount the 3D canvas only when this section is near the viewport.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const el = triggerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCanvasReady(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '300px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!triggerRef.current || !pinTargetRef.current) return;
@@ -56,9 +76,13 @@ export default function SignatureScrollSection() {
         ref={pinTargetRef}
         className="w-full h-screen relative flex flex-col justify-between p-6 sm:p-10 overflow-hidden select-none"
       >
-        {/* 3D Canvas Background Scene */}
+        {/* 3D Canvas Background Scene — lazy-mounted when section is near viewport */}
         <div className="absolute inset-0 z-0">
-          <SignatureScrollCanvas progress={progress} />
+          {canvasReady ? (
+            <SignatureScrollCanvas progress={progress} />
+          ) : (
+            <div className="w-full h-full bg-near-black" />
+          )}
         </div>
 
         {/* Minimal UI Chrome: Top Header Bar */}

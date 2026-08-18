@@ -153,10 +153,7 @@ export default function Portfolio3DCanvas({
   const previousTouchX = useRef(0);
 
   useEffect(() => {
-    setMounted(true);
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -178,8 +175,37 @@ export default function Portfolio3DCanvas({
     isDragging.current = false;
   };
 
+  // Only initialize the heavy WebGL context once this element is near the viewport.
+  const containerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setMounted(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   if (!mounted) {
-    return <div className="w-full h-[460px] sm:h-[560px] md:h-[640px] bg-dark-card rounded-3xl animate-pulse" />;
+    return (
+      <div
+        ref={containerRef}
+        className="w-full h-[460px] sm:h-[560px] md:h-[640px] bg-dark-card rounded-3xl animate-pulse flex items-center justify-center border border-dark-border"
+      >
+        <span className="text-xs font-semibold text-offwhite-muted/60 tracking-widest uppercase">
+          Loading showcase…
+        </span>
+      </div>
+    );
   }
 
   if (hasError) {

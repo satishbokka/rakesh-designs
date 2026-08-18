@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import SmoothScroll from '@/components/layout/SmoothScroll';
 import CustomCursor from '@/components/ui/CustomCursor';
-import Preloader from '@/components/ui/Preloader';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
@@ -20,9 +19,6 @@ export default function Home() {
   return (
     <SmoothScroll>
       <main className="min-h-screen bg-near-black text-light-bg relative selection:bg-warm-orange selection:text-near-black">
-        {/* Studio Intro Preloader */}
-        <Preloader />
-
         {/* Custom Magnetic Ring Cursor */}
         <CustomCursor />
 
