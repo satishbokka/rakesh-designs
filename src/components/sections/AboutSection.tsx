@@ -36,7 +36,7 @@ export default function AboutSection() {
                   Rakesh Designs
                 </h3>
                 <p className="text-xs uppercase tracking-widest text-warm-orange font-semibold mt-1">
-                  Creative Studio & Visual Craft
+                  Graphic Design & Visual Craft
                 </p>
               </div>
 
@@ -68,7 +68,7 @@ export default function AboutSection() {
           >
             <div className="inline-flex items-center gap-2 text-xs font-semibold text-warm-orange uppercase tracking-widest">
               <Award className="w-4 h-4" />
-              <span>Studio Story & Philosophy</span>
+              <span>Studio Craft & Philosophy</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-light-bg tracking-tight leading-tight">
@@ -80,7 +80,7 @@ export default function AboutSection() {
             </p>
 
             <p className="text-sm sm:text-base text-offwhite-muted/90 leading-relaxed">
-              Over the past 5+ years, we have delivered custom photo frames, custom display pictures (CDPs), high-key portrait retouches, and large-format outdoor flex banners across Telangana and Andhra Pradesh.
+              We deliver custom photo frames, custom display pictures (CDPs), portrait retouches, and outdoor flex banners across Telangana and Andhra Pradesh.
             </p>
 
             {/* Core Strengths */}
@@ -96,36 +96,6 @@ export default function AboutSection() {
                   <span>{value}</span>
                 </div>
               ))}
-            </div>
-
-            {/* Metrics Counter */}
-            <div className="pt-6 border-t border-dark-border/60 grid grid-cols-3 gap-4 text-center">
-              <div className="bg-dark-card p-4 rounded-2xl border border-dark-border">
-                <span className="font-display text-2xl sm:text-3xl font-extrabold text-warm-orange block">
-                  {STUDIO_INFO.projectsCompleted}
-                </span>
-                <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-light-bg/80">
-                  Projects Delivered
-                </span>
-              </div>
-
-              <div className="bg-dark-card p-4 rounded-2xl border border-dark-border">
-                <span className="font-display text-2xl sm:text-3xl font-extrabold text-light-bg block">
-                  {STUDIO_INFO.yearsExperience}
-                </span>
-                <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-light-bg/80">
-                  Years Crafting
-                </span>
-              </div>
-
-              <div className="bg-dark-card p-4 rounded-2xl border border-dark-border">
-                <span className="font-display text-2xl sm:text-3xl font-extrabold text-warm-orange block">
-                  {STUDIO_INFO.satisfactionRate}
-                </span>
-                <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-light-bg/80">
-                  Satisfaction Rate
-                </span>
-              </div>
             </div>
 
           </motion.div>

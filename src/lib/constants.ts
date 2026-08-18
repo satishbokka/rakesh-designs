@@ -47,9 +47,6 @@ export const STUDIO_INFO = {
   whatsappUrl: 'https://wa.me/918978015826?text=Hi%20Rakesh%20Designs,%20I%27m%20interested%20in%20getting%20a%20design.%20I%27d%20like%20to%20discuss%20my%20requirements.',
   location: 'Amalapuram, Andhra Pradesh',
   email: 'hello@rakeshdesigns.in',
-  yearsExperience: '5+',
-  projectsCompleted: '500+',
-  satisfactionRate: '99.4%',
 };
 
 export const SERVICES: ServiceCategory[] = [

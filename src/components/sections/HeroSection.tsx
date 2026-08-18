@@ -47,8 +47,6 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-dark-card border border-dark-border rounded-full text-xs font-semibold text-light-bg tracking-wider uppercase shadow-sm">
               <Sparkles className="w-3.5 h-3.5 text-warm-orange" />
               <span>RAKESH DESIGNS</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-warm-orange" />
-              <span className="text-warm-orange">{STUDIO_INFO.yearsExperience} EXPERIENCE</span>
             </div>
 
             {/* Main Headline */}
@@ -91,7 +89,7 @@ export default function HeroSection({ onOpenQuote }: HeroSectionProps) {
               </div>
               <div className="flex items-center gap-2">
                 <Award className="w-4 h-4 text-light-bg" />
-                <span>500+ Projects Delivered</span>
+                <span>Projects Delivered</span>
               </div>
             </div>
           </motion.div>

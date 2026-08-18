@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: STUDIO_INFO.name }],
   openGraph: {
-    title: `${STUDIO_INFO.name} — Premium Creative Studio`,
+    title: `${STUDIO_INFO.name} — Graphic Design & Visual Craft`,
     description: STUDIO_INFO.subTagline,
     url: 'https://rakeshdesigns.in',
     siteName: STUDIO_INFO.name,

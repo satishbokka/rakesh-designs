@@ -96,22 +96,6 @@ export default function ServicesSection({ onOpenQuote }: ServicesSectionProps) {
                 </div>
               </div>
 
-              {/* Action Button */}
-              <div className="pt-6 mt-6 border-t border-dark-border/60 flex items-center justify-between">
-                <span className="text-xs text-offwhite-muted/70 italic">
-                  Custom inquiries welcome
-                </span>
-
-                <a
-                  href="#contact"
-                  onClick={(e) => handleNavScroll(e, '#contact')}
-                  data-cursor="magnetic"
-                  className="px-4 py-2.5 bg-warm-orange hover:bg-orange-light text-near-black text-xs font-extrabold uppercase tracking-wider rounded-xl transition-all flex items-center gap-1.5 shadow-orange-glow cursor-pointer"
-                >
-                  <span>Let's talk</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-near-black" />
-                </a>
-              </div>
             </motion.div>
           ))}
         </div>

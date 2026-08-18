@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Portfolio3DCanvas = dynamic(() => import('@/components/3d/Portfolio3DCanvas'), {
   ssr: false,
-  loading: () => <div className="w-full h-[420px] sm:h-[540px] md:h-[640px] bg-dark-card/50 rounded-3xl animate-pulse" />,
+  loading: () => <div className="w-full h-[460px] sm:h-[560px] md:h-[640px] bg-dark-card/50 rounded-3xl animate-pulse" />,
 });
 
 interface PortfolioSectionProps {
@@ -46,6 +46,7 @@ export default function PortfolioSection({ onOpenQuote }: PortfolioSectionProps)
 
   useEffect(() => {
     if (viewMode !== '3d' || !pinWrapperRef.current) return;
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return;
 
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
@@ -157,27 +158,27 @@ export default function PortfolioSection({ onOpenQuote }: PortfolioSectionProps)
             </div>
 
             {/* 3D Controls Bar */}
-            <div className="flex items-center justify-between px-4 py-2.5 bg-dark-card/60 border border-dark-border rounded-2xl">
+            <div className="flex items-center justify-between gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-dark-card/60 border border-dark-border rounded-2xl">
               <button
                 onClick={handlePrev}
                 data-cursor="magnetic"
-                className="px-3.5 py-2 sm:px-4 sm:py-2 bg-near-black border border-dark-border hover:border-warm-orange rounded-xl text-[11px] sm:text-xs font-bold text-light-bg flex items-center gap-1 transition-all shadow-sm cursor-pointer whitespace-nowrap"
+                className="px-3 py-2 sm:px-4 sm:py-2 bg-near-black border border-dark-border hover:border-warm-orange rounded-xl text-xs font-bold text-light-bg flex items-center gap-1 transition-all shadow-sm cursor-pointer whitespace-nowrap active:scale-95 min-h-[40px]"
               >
-                <ChevronLeft className="w-4 h-4 text-warm-orange" />
+                <ChevronLeft className="w-4 h-4 text-warm-orange flex-shrink-0" />
                 <span>Rotate Prev</span>
               </button>
 
-              <span className="text-xs font-semibold text-offwhite-muted hidden sm:inline">
-                Scroll page or drag left / right to scrub 3D rotation • {filteredItems.length} Pieces
+              <span className="text-xs font-semibold text-offwhite-muted/80 hidden md:inline text-center">
+                Drag left / right or tap buttons to rotate
               </span>
 
               <button
                 onClick={handleNext}
                 data-cursor="magnetic"
-                className="px-3.5 py-2 sm:px-4 sm:py-2 bg-near-black border border-dark-border hover:border-warm-orange rounded-xl text-[11px] sm:text-xs font-bold text-light-bg flex items-center gap-1 transition-all shadow-sm cursor-pointer whitespace-nowrap"
+                className="px-3 py-2 sm:px-4 sm:py-2 bg-near-black border border-dark-border hover:border-warm-orange rounded-xl text-xs font-bold text-light-bg flex items-center gap-1 transition-all shadow-sm cursor-pointer whitespace-nowrap active:scale-95 min-h-[40px]"
               >
                 <span>Rotate Next</span>
-                <ChevronRight className="w-4 h-4 text-warm-orange" />
+                <ChevronRight className="w-4 h-4 text-warm-orange flex-shrink-0" />
               </button>
             </div>
           </div>

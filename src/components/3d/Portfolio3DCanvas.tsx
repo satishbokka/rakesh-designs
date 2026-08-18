@@ -15,35 +15,58 @@ interface CarouselCardProps {
 }
 
 function CarouselCard({ item, angle, radius, rotationOffset, onSelect, isMobile }: CarouselCardProps) {
-  const meshRef = useRef<Mesh>(null);
+  const groupRef = useRef<Group>(null);
   const texture = useLoader(TextureLoader, item.image);
   const [hovered, setHovered] = useState(false);
+
+  // Calculate precise aspect ratio to prevent stretching, squashing, or cropping
+  let aspect = 0.8;
+  if (texture?.image?.width && texture?.image?.height) {
+    aspect = texture.image.width / texture.image.height;
+  } else if (item.aspectRatio === 'aspect-[3/4]') {
+    aspect = 0.75;
+  } else if (item.aspectRatio === 'aspect-[4/5]') {
+    aspect = 0.8;
+  } else if (item.aspectRatio === 'aspect-[1/1]') {
+    aspect = 1.0;
+  } else if (item.aspectRatio === 'aspect-[16/9]') {
+    aspect = 16 / 9;
+  }
+
+  const baseH = 3.2;
+  let planeW = baseH * aspect;
+  let planeH = baseH;
+
+  if (aspect > 1.3) {
+    planeW = 3.8;
+    planeH = 3.8 / aspect;
+  }
 
   const currentAngle = angle + rotationOffset;
   const x = Math.sin(currentAngle) * radius;
   const z = Math.cos(currentAngle) * radius - radius;
   const rotY = currentAngle;
 
-  const isFront = Math.abs(currentAngle % (Math.PI * 2)) < 0.35;
+  const normAngle = Math.atan2(Math.sin(currentAngle), Math.cos(currentAngle));
+  const isFront = Math.abs(normAngle) < 0.42;
 
   useFrame(() => {
-    if (!meshRef.current) return;
-    meshRef.current.position.x += (x - meshRef.current.position.x) * 0.1;
-    meshRef.current.position.z += (z - meshRef.current.position.z) * 0.1;
-    meshRef.current.rotation.y += (rotY - meshRef.current.rotation.y) * 0.1;
+    if (!groupRef.current) return;
+    groupRef.current.position.x += (x - groupRef.current.position.x) * 0.12;
+    groupRef.current.position.z += (z - groupRef.current.position.z) * 0.12;
+    groupRef.current.rotation.y += (rotY - groupRef.current.rotation.y) * 0.12;
 
-    // Center artwork occupies ~65-80% of showcase area on mobile
-    const baseScale = isMobile ? 1.55 : 1.45;
-    const sideScale = isMobile ? 0.62 : 0.82;
-    const targetScale = hovered ? baseScale * 1.08 : isFront ? baseScale : sideScale;
+    const baseScale = isMobile ? 1.65 : 1.45;
+    const sideScale = isMobile ? 0.55 : 0.76;
+    const targetScale = hovered ? baseScale * 1.06 : isFront ? baseScale : sideScale;
 
-    meshRef.current.scale.x += (targetScale - meshRef.current.scale.x) * 0.1;
-    meshRef.current.scale.y += (targetScale - meshRef.current.scale.y) * 0.1;
+    groupRef.current.scale.x += (targetScale - groupRef.current.scale.x) * 0.12;
+    groupRef.current.scale.y += (targetScale - groupRef.current.scale.y) * 0.12;
   });
 
   return (
-    <mesh
-      ref={meshRef}
+    <group
+      ref={groupRef}
       position={[x, 0, z]}
       rotation={[0, rotY, 0]}
       onClick={(e) => {
@@ -58,15 +81,23 @@ function CarouselCard({ item, angle, radius, rotationOffset, onSelect, isMobile 
         setHovered(false);
       }}
     >
-      {/* Natural aspect ratio plane dimensions */}
-      <planeGeometry args={[2.6, 3.4]} />
-      <meshStandardMaterial
-        map={texture}
-        roughness={0.2}
-        metalness={0.05}
-        transparent={true}
-      />
-    </mesh>
+      {/* 3D Physical Card Backing */}
+      <mesh position={[0, 0, -0.01]}>
+        <planeGeometry args={[planeW + 0.08, planeH + 0.08]} />
+        <meshStandardMaterial color="#141414" roughness={0.5} />
+      </mesh>
+
+      {/* Main Artwork Texture Plane */}
+      <mesh position={[0, 0, 0]}>
+        <planeGeometry args={[planeW, planeH]} />
+        <meshStandardMaterial
+          map={texture}
+          roughness={0.15}
+          metalness={0.02}
+          transparent={true}
+        />
+      </mesh>
+    </group>
   );
 }
 
@@ -80,7 +111,7 @@ interface CarouselGroupProps {
 function CarouselGroup({ items, rotationOffset, onSelect, isMobile }: CarouselGroupProps) {
   const groupRef = useRef<Group>(null);
   const count = items.length || 1;
-  const radius = isMobile ? 3.6 : 4.4;
+  const radius = isMobile ? 3.3 : 4.4;
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
@@ -148,12 +179,12 @@ export default function Portfolio3DCanvas({
   };
 
   if (!mounted) {
-    return <div className="w-full h-[420px] sm:h-[540px] md:h-[640px] bg-dark-card rounded-3xl animate-pulse" />;
+    return <div className="w-full h-[460px] sm:h-[560px] md:h-[640px] bg-dark-card rounded-3xl animate-pulse" />;
   }
 
   if (hasError) {
     return (
-      <div className="w-full h-[420px] bg-dark-card rounded-3xl p-6 flex items-center justify-center text-center border border-dark-border">
+      <div className="w-full h-[460px] bg-dark-card rounded-3xl p-6 flex items-center justify-center text-center border border-dark-border">
         <p className="text-sm font-semibold text-light-bg">
           WebGL preview suspended. Switch to Grid View above to view all portfolio items.
         </p>
@@ -163,14 +194,14 @@ export default function Portfolio3DCanvas({
 
   return (
     <div
-      className="w-full h-[420px] sm:h-[540px] md:h-[640px] relative select-none cursor-grab active:cursor-grabbing rounded-3xl overflow-hidden bg-gradient-to-b from-dark-card/90 via-near-black to-near-black border border-dark-border shadow-premium"
+      className="w-full h-[460px] sm:h-[560px] md:h-[640px] relative select-none cursor-grab active:cursor-grabbing rounded-3xl overflow-hidden bg-gradient-to-b from-dark-card/90 via-near-black to-near-black border border-dark-border shadow-premium"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
     >
       <Canvas
-        camera={{ position: [0, 0, isMobile ? 3.4 : 3.8], fov: isMobile ? 50 : 45 }}
+        camera={{ position: [0, 0, isMobile ? 3.0 : 3.6], fov: isMobile ? 48 : 42 }}
         gl={{ antialias: true, alpha: true, failIfMajorPerformanceCaveat: false }}
         onCreated={({ gl }) => {
           gl.domElement.addEventListener('webglcontextlost', (e) => {
@@ -193,8 +224,8 @@ export default function Portfolio3DCanvas({
         </Suspense>
       </Canvas>
 
-      {/* Exact Instruction Overlay */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3.5 py-1.5 bg-near-black/90 border border-dark-border text-light-bg/90 text-[11px] tracking-wider rounded-full backdrop-blur-md shadow-lg pointer-events-none z-10 whitespace-nowrap">
+      {/* Exact Interaction Guidance Overlay */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3.5 py-1.5 bg-near-black/90 border border-dark-border text-light-bg/90 text-[11px] font-medium tracking-wider rounded-full backdrop-blur-md shadow-lg pointer-events-none z-10 whitespace-nowrap">
         <span className="w-1.5 h-1.5 rounded-full bg-warm-orange animate-ping" />
         <span>Drag left / right • Tap to view</span>
       </div>
